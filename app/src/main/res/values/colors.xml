@@ -9,6 +9,7 @@
     <color name="yellowOne">#F3C404</color>
     <color name="blackOne">#555555</color>
     <color name="blackTwo">#808080</color>
+    <color name="blackThree">#CCCCCC</color>
     <color name="redOne">#FF6060</color>
 
 </resources>

@@ -6,12 +6,98 @@
     android:layout_height="match_parent"
     tools:context=".presentation.fragment.auth.AuthFragment">
 
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/title_app"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="To Login"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/ps2p"
+        android:text="@string/app_title"
+        android:textFontWeight="600"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/getting_coffee"
+        app:layout_constraintBottom_toTopOf="@id/content_layout"
+        app:layout_constraintEnd_toEndOf="@id/content_layout"
+        app:layout_constraintStart_toStartOf="@id/content_layout" />
+
+    <View
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:layout_marginEnd="-30dp"
+        android:background="@drawable/ellips_reversed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:layout_width="340dp"
+        android:layout_height="280dp"
+        android:layout_marginStart="-30dp"
+        android:background="@drawable/ellips"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/content_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="320dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/bg_rounded_border"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_app">
+
+        <TextView
+            android:id="@+id/content_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/ps2p"
+            android:text="Convert your daily-basis conversation to sign language"
+            android:textAlignment="center"
+            android:textColor="@color/purpleOne"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/content_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/ps2p"
+            android:text="Be par on par on conversation with your friends that are hearing impaired now. Learn the language using machine learning inside."
+            android:textAlignment="center"
+            android:textColor="@color/blackOne"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/content_one" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:backgroundTint="@color/purpleTwo"
+            android:fontFamily="@font/ps2p"
+            android:text="Get Started"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/content_two" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

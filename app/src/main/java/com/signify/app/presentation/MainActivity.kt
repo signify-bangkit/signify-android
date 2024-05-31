@@ -14,4 +14,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         installSplashScreen()
     }
+
+    override fun doSomething() {
+        super.doSomething()
+    }
 }
