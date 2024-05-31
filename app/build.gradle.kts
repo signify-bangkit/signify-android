@@ -52,14 +52,6 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
-    // New library catalog in toml is such a mess,
-    // fuck Android ecosystem in general, we going
-    // to declare this here.
-    val lifecycle_version = "2.8.0"
-    val room_version = "2.6.1"
-    val koin_version = "3.5.3"
-    val paging_version = "3.3.0"
-
     // Navigation
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
@@ -68,34 +60,34 @@ dependencies {
     implementation(libs.converter.moshi)
     implementation(libs.retrofit)
     implementation(libs.moshi)
-    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    implementation(libs.logging.interceptor)
 
     // Room
-    implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
-    ksp("androidx.room:room-compiler:$room_version")
-    implementation("androidx.room:room-ktx:$room_version")
-    implementation("androidx.room:room-paging:$room_version")
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.paging)
 
     // Lifecycle
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
 
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+    implementation(libs.kotlinx.coroutines.android)
 
     // Coil
-    implementation("io.coil-kt:coil:2.6.0")
+    implementation(libs.coil)
 
     // SplashScreen for Android 12 and up
-    implementation("androidx.core:core-splashscreen:1.0.0-beta02")
+    implementation(libs.androidx.core.splashscreen)
 
     // Paging
-    implementation("androidx.paging:paging-runtime:$paging_version")
+    implementation(libs.androidx.paging.runtime.ktx)
 
     // Koin
-    implementation("io.insert-koin:koin-android:$koin_version")
-    implementation("io.insert-koin:koin-androidx-navigation:$koin_version")
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.navigation)
 
     // Testing-related
     testImplementation(libs.junit)
@@ -103,8 +95,8 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     // Testing: Koin
-    testImplementation("io.insert-koin:koin-test:$koin_version")
-    testImplementation("io.insert-koin:koin-test-junit4:$koin_version")
-    testImplementation("io.insert-koin:koin-test-junit5:$koin_version")
+    testImplementation(libs.koin.test)
+    testImplementation(libs.koin.test.junit4)
+    testImplementation(libs.koin.test.junit5)
 
 }
