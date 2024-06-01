@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
 
     <color name="purpleOne">#9F5DE1</color>
     <color name="purpleTwo">#C285FF</color>
@@ -11,5 +12,8 @@
     <color name="blackTwo">#808080</color>
     <color name="blackThree">#CCCCCC</color>
     <color name="redOne">#FF6060</color>
+
+    <color name="inputColor">#F3F3F3</color>
+
 
 </resources>

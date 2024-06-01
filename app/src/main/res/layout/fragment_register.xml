@@ -22,7 +22,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/having_fun"
+        android:src="@drawable/doing_documents"
         app:layout_constraintBottom_toTopOf="@id/content_layout"
         app:layout_constraintEnd_toEndOf="@id/content_layout"
         app:layout_constraintStart_toStartOf="@id/content_layout" />
@@ -51,10 +51,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="120dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/bg_rounded_border"
-        android:padding="20dp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/inter_bold"
-            android:text="Welcome Back!"
+            android:text="Create an account"
             android:textAlignment="center"
             android:textColor="@color/blackOne"
             android:textSize="18sp"
@@ -78,10 +79,10 @@
             android:id="@+id/content_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/inter_regular"
             android:paddingHorizontal="20dp"
-            android:text="Hello there! welcome to Signify. To enter the app please log in first."
+            android:text="It seems you don’t have an account to log in, huh? let’s go fill these form first"
             android:textAlignment="center"
             android:textColor="@color/blackTwo"
             android:textSize="14sp"
@@ -89,17 +90,46 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/content_one" />
 
+
         <TextView
-            android:id="@+id/label_email"
+            android:id="@+id/label_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:alpha="1"
             android:fontFamily="@font/inter_regular"
+            android:text="@string/name_title"
+            android:textColor="@color/blackTwo"
+            app:layout_constraintStart_toStartOf="@id/ed_name"
+            app:layout_constraintTop_toBottomOf="@id/content_two"
+            tools:alpha="1"
+            tools:layout_editor_absoluteY="381dp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_name"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_custom_input"
+            android:fontFamily="@font/inter_regular"
+            android:hint="your name"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="10dp"
+            android:textSize="14dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_name" />
+
+        <TextView
+            android:id="@+id/label_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:alpha="1"
+            android:fontFamily="@font/inter_regular"
             android:text="@string/email_title"
             android:textColor="@color/blackTwo"
             app:layout_constraintStart_toStartOf="@id/ed_email"
-            app:layout_constraintTop_toBottomOf="@id/content_two"
+            app:layout_constraintTop_toBottomOf="@id/ed_name"
             tools:alpha="1"
             tools:layout_editor_absoluteY="381dp" />
 
@@ -145,34 +175,47 @@
             app:layout_constraintStart_toStartOf="@id/ed_email"
             app:layout_constraintTop_toBottomOf="@id/label_password" />
 
+        <TextView
+            android:id="@+id/label_confirm_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:alpha="1"
+            android:fontFamily="@font/inter_regular"
+            android:text="@string/confirm_password_title"
+            android:textColor="@color/blackTwo"
+            app:layout_constraintStart_toStartOf="@id/ed_confirm_password"
+            app:layout_constraintTop_toBottomOf="@id/ed_password"
+            tools:alpha="1"
+            tools:layout_editor_absoluteY="381dp" />
+
+        <com.signify.app.presentation.component.PasswordTextField
+            android:id="@+id/ed_confirm_password"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_custom_input"
+            android:fontFamily="@font/inter_regular"
+            android:hint="confirm password"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="10dp"
+            android:textSize="14dp"
+            app:layout_constraintEnd_toEndOf="@id/ed_password"
+            app:layout_constraintStart_toStartOf="@id/ed_password"
+            app:layout_constraintTop_toBottomOf="@id/label_confirm_password" />
 
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_signup"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/purpleOne"
             android:fontFamily="@font/inter_bold"
-            android:text="Sign In"
+            android:text="Sign Up"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ed_password" />
-
-        <Button
-            android:id="@+id/btn_register"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:backgroundTint="@color/transparent"
-            android:text="@string/go_to_signup"
-            android:textColor="@color/purpleThree"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_login"
-            tools:alpha="100" />
+            app:layout_constraintTop_toBottomOf="@id/ed_confirm_password" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

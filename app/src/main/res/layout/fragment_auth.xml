@@ -11,7 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:fontFamily="@font/ps2p"
+        android:fontFamily="@font/inter_black"
+        android:textSize="24dp"
         android:text="@string/app_title"
         android:textFontWeight="600"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,14 +32,16 @@
         android:layout_height="320dp"
         android:layout_marginEnd="-30dp"
         android:background="@drawable/ellips_reversed"
+        android:backgroundTint="@color/blackOne"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <View
         android:layout_width="340dp"
         android:layout_height="280dp"
-        android:layout_marginStart="-30dp"
+        android:layout_marginStart="-34dp"
         android:background="@drawable/ellips"
+        android:backgroundTint="@color/blackOne"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -62,11 +65,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/ps2p"
+            android:fontFamily="@font/inter_bold"
             android:text="Convert your daily-basis conversation to sign language"
             android:textAlignment="center"
-            android:textColor="@color/purpleOne"
-            android:textSize="12sp"
+            android:textColor="@color/blackOne"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -76,24 +79,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/ps2p"
+            android:fontFamily="@font/inter_regular"
             android:text="Be par on par on conversation with your friends that are hearing impaired now. Learn the language using machine learning inside."
             android:textAlignment="center"
             android:textColor="@color/blackOne"
-            android:textSize="10sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/content_one" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_login"
-            android:layout_width="wrap_content"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:backgroundTint="@color/purpleTwo"
-            android:fontFamily="@font/ps2p"
-            android:text="Get Started"
-            android:textSize="10sp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/purpleOne"
+            android:fontFamily="@font/inter_semi"
+            android:includeFontPadding="false"
+            android:text="Get Started!"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/content_two" />
