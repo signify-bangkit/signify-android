@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.core.view.WindowCompat
 import androidx.navigation.fragment.findNavController
 import com.signify.app.base.BaseFragment
 import com.signify.app.databinding.FragmentAuthBinding
@@ -24,8 +25,13 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activity?.window?.statusBarColor = Color.GRAY
+        activity?.window?.statusBarColor = Color.TRANSPARENT
         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+
+        WindowCompat.getInsetsController(
+            requireActivity().window,
+            requireActivity().window.decorView
+        ).isAppearanceLightStatusBars = true
 
     }
 
