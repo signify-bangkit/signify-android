@@ -20,6 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/image_illustration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/doing_documents"
@@ -66,29 +67,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:alpha="0"
             android:fontFamily="@font/inter_bold"
-            android:text="Create an account"
+            android:text="@string/register_greetings_text"
             android:textAlignment="center"
             android:textColor="@color/blackOne"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:alpha="1" />
 
         <TextView
             android:id="@+id/content_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:alpha="0"
             android:fontFamily="@font/inter_regular"
             android:paddingHorizontal="20dp"
-            android:text="It seems you don’t have an account to log in, huh? let’s go fill these form first"
+            android:text="@string/register_greetings_desc_text"
             android:textAlignment="center"
             android:textColor="@color/blackTwo"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/content_one" />
+            app:layout_constraintTop_toBottomOf="@id/content_one"
+            tools:alpha="1" />
 
 
         <TextView
@@ -96,7 +101,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:alpha="1"
+            android:alpha="0"
             android:fontFamily="@font/inter_regular"
             android:text="@string/name_title"
             android:textColor="@color/blackTwo"
@@ -109,22 +114,24 @@
             android:id="@+id/ed_name"
             android:layout_width="280dp"
             android:layout_height="40dp"
+            android:alpha="0"
             android:background="@drawable/bg_custom_input"
             android:fontFamily="@font/inter_regular"
-            android:hint="your name"
+            android:hint="@string/placeholder_name"
             android:includeFontPadding="false"
             android:paddingHorizontal="10dp"
             android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/label_name" />
+            app:layout_constraintTop_toBottomOf="@id/label_name"
+            tools:alpha="1" />
 
         <TextView
             android:id="@+id/label_email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:alpha="1"
+            android:alpha="0"
             android:fontFamily="@font/inter_regular"
             android:text="@string/email_title"
             android:textColor="@color/blackTwo"
@@ -137,22 +144,24 @@
             android:id="@+id/ed_email"
             android:layout_width="280dp"
             android:layout_height="40dp"
+            android:alpha="0"
             android:background="@drawable/bg_custom_input"
             android:fontFamily="@font/inter_regular"
-            android:hint="your@email.com"
+            android:hint="@string/placeholder_email"
             android:includeFontPadding="false"
             android:paddingHorizontal="10dp"
             android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/label_email" />
+            app:layout_constraintTop_toBottomOf="@id/label_email"
+            tools:alpha="1" />
 
         <TextView
             android:id="@+id/label_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:alpha="1"
+            android:alpha="0"
             android:fontFamily="@font/inter_regular"
             android:text="@string/password_title"
             android:textColor="@color/blackTwo"
@@ -165,22 +174,24 @@
             android:id="@+id/ed_password"
             android:layout_width="280dp"
             android:layout_height="40dp"
+            android:alpha="0"
             android:background="@drawable/bg_custom_input"
             android:fontFamily="@font/inter_regular"
-            android:hint="password"
+            android:hint="@string/placeholder_password"
             android:includeFontPadding="false"
             android:paddingHorizontal="10dp"
             android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="@id/ed_email"
             app:layout_constraintStart_toStartOf="@id/ed_email"
-            app:layout_constraintTop_toBottomOf="@id/label_password" />
+            app:layout_constraintTop_toBottomOf="@id/label_password"
+            tools:alpha="1" />
 
         <TextView
             android:id="@+id/label_confirm_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:alpha="1"
+            android:alpha="0"
             android:fontFamily="@font/inter_regular"
             android:text="@string/confirm_password_title"
             android:textColor="@color/blackTwo"
@@ -193,15 +204,17 @@
             android:id="@+id/ed_confirm_password"
             android:layout_width="280dp"
             android:layout_height="40dp"
+            android:alpha="0"
             android:background="@drawable/bg_custom_input"
             android:fontFamily="@font/inter_regular"
-            android:hint="confirm password"
+            android:hint="@string/placeholder_confirm_password"
             android:includeFontPadding="false"
             android:paddingHorizontal="10dp"
             android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="@id/ed_password"
             app:layout_constraintStart_toStartOf="@id/ed_password"
-            app:layout_constraintTop_toBottomOf="@id/label_confirm_password" />
+            app:layout_constraintTop_toBottomOf="@id/label_confirm_password"
+            tools:alpha="1" />
 
         <Button
             android:id="@+id/btn_signup"
@@ -209,13 +222,15 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"
+            android:alpha="0"
             android:backgroundTint="@color/purpleOne"
             android:fontFamily="@font/inter_bold"
-            android:text="Sign Up"
+            android:text="@string/sign_up_button_text"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ed_confirm_password" />
+            app:layout_constraintTop_toBottomOf="@id/ed_confirm_password"
+            tools:alpha="1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

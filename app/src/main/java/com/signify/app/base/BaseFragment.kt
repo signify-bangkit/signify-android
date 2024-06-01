@@ -36,4 +36,5 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     open fun doSomething() {
         // Do something here
     }
+
 }

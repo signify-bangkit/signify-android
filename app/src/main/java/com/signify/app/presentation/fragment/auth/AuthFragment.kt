@@ -1,8 +1,11 @@
 package com.signify.app.presentation.fragment.auth
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.navigation.fragment.findNavController
@@ -27,10 +30,41 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
     }
 
     override fun doSomething() {
-        binding.btnLogin.setOnClickListener {
+        initListener()
+        initAnimation()
+    }
+
+    private fun initListener() {
+        binding.btnGetStarted.setOnClickListener {
             val direction =
                 AuthFragmentDirections.actionAuthFragmentToLoginFragment()
             findNavController().navigate(direction)
         }
+    }
+
+    private fun initAnimation() {
+        ObjectAnimator.ofFloat(
+            binding.imageIllustration, View.TRANSLATION_X, -10f, 10f
+        ).apply {
+            duration = 3000
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+        }.start()
+
+        val contentOne =
+            ObjectAnimator.ofFloat(binding.contentOne, View.ALPHA, 1f)
+                .setDuration(100)
+        val contentTwo =
+            ObjectAnimator.ofFloat(binding.contentTwo, View.ALPHA, 1f)
+                .setDuration(100)
+        val getStartedButton =
+            ObjectAnimator.ofFloat(binding.btnGetStarted, View.ALPHA, 1f)
+                .setDuration(100)
+
+        AnimatorSet().apply {
+            playSequentially(
+                contentOne, contentTwo, getStartedButton
+            )
+        }.start()
     }
 }

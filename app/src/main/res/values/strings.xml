@@ -10,4 +10,17 @@
     <string name="go_to_signup">Wanna sign up first?</string>
     <string name="name_title">Name</string>
     <string name="confirm_password_title">Confirm Password</string>
+    <string name="login_greetings_text">Welcome Back!</string>
+    <string name="login_greetings_desc_text">Hello there! welcome to Signify. To enter the app please log in first.</string>
+    <string name="placeholder_email">your@email.com</string>
+    <string name="placeholder_password">password</string>
+    <string name="sign_in_button_text">Sign In</string>
+    <string name="greetings_text">Convert your daily-basis conversation to sign language</string>
+    <string name="greetings_desc_text">Be par on par on conversation with your friends that are hearing impaired now. Learn the language using machine learning inside.</string>
+    <string name="get_started_button_text">Get Started!</string>
+    <string name="register_greetings_text">Create an account</string>
+    <string name="register_greetings_desc_text">It seems you don’t have an account to log in, huh? let’s go fill these form first</string>
+    <string name="placeholder_name">your name</string>
+    <string name="placeholder_confirm_password">confirm password</string>
+    <string name="sign_up_button_text">Sign Up</string>
 </resources>
