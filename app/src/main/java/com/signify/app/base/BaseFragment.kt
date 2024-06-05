@@ -28,9 +28,14 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        beforeSomething()
         super.onViewCreated(view, savedInstanceState)
 
         doSomething()
+    }
+
+    open fun beforeSomething() {
+        // Do before something here
     }
 
     open fun doSomething() {

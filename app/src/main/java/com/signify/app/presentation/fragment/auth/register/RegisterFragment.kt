@@ -1,8 +1,9 @@
-package com.signify.app.presentation.fragment.register
+package com.signify.app.presentation.fragment.auth.register
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.transition.ChangeBounds
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,16 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
         savedInstanceState: Bundle?
     ): FragmentRegisterBinding {
         return FragmentRegisterBinding.inflate(inflater, container, false)
+    }
+
+    override fun beforeSomething() {
+        super.beforeSomething()
+        sharedElementEnterTransition = ChangeBounds().apply {
+            duration = 400
+        }
+        sharedElementReturnTransition = ChangeBounds().apply {
+            duration = 400
+        }
     }
 
     override fun doSomething() {

@@ -1,12 +1,15 @@
-package com.signify.app.presentation.fragment.login
+package com.signify.app.presentation.fragment.auth.login
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.transition.ChangeBounds
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
+import com.signify.app.R
 import com.signify.app.base.BaseFragment
 import com.signify.app.databinding.FragmentLoginBinding
 
@@ -19,6 +22,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         return FragmentLoginBinding.inflate(inflater, container, false)
     }
 
+    override fun beforeSomething() {
+        super.beforeSomething()
+        sharedElementEnterTransition = ChangeBounds().apply {
+            duration = 400
+        }
+        sharedElementReturnTransition = ChangeBounds().apply {
+            duration = 400
+        }
+    }
+
     override fun doSomething() {
         super.doSomething()
 
@@ -27,13 +40,29 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     }
 
     private fun initListener() {
-        binding.btnRegister.setOnClickListener {
-            val direction =
-                LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
-            findNavController().navigate(direction)
-        }
         with(binding) {
             edPasswordWrapper.isHintEnabled = false
+
+            btnRegister.setOnClickListener {
+                val extras = FragmentNavigatorExtras(
+                    contentLayout to "content_layout_shared",
+                    imageIllustration to "image_illustration_shared"
+                )
+                findNavController().navigate(
+                    R.id.action_loginFragment_to_registerFragment,
+                    null,
+                    null,
+                    extras
+                )
+            }
+
+            btnLogin.setOnClickListener {
+
+                val extras = FragmentNavigatorExtras(
+                    contentLayout to "content_layout_shared",
+                )
+                findNavController().navigate(R.id.action_loginFragment_to_homeFragment, null, null, extras)
+            }
 
             // focus listener, weird this bug happened sometimes
             //edPassword.apply {

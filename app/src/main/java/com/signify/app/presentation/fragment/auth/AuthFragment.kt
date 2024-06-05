@@ -9,7 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.core.view.WindowCompat
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
+import com.signify.app.R
 import com.signify.app.base.BaseFragment
 import com.signify.app.databinding.FragmentAuthBinding
 
@@ -42,9 +44,16 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
 
     private fun initListener() {
         binding.btnGetStarted.setOnClickListener {
-            val direction =
-                AuthFragmentDirections.actionAuthFragmentToLoginFragment()
-            findNavController().navigate(direction)
+            val extras = FragmentNavigatorExtras(
+                binding.contentLayout to "content_layout_shared",
+                binding.imageIllustration to "image_illustration_shared"
+            )
+            findNavController().navigate(
+                R.id.action_authFragment_to_loginFragment,
+                null,
+                null,
+                extras
+            )
         }
     }
 

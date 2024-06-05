@@ -4,14 +4,15 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
 
-    <color name="purpleOne">#9F5DE1</color>
-    <color name="purpleTwo">#C285FF</color>
-    <color name="purpleThree">#DAB4FF</color>
-    <color name="yellowOne">#F3C404</color>
+    <color name="blueOne">#4338B8</color>
+    <color name="blueTwo">#5B4DD6</color>
+    <color name="blueThree">#A095F2</color>
     <color name="blackOne">#555555</color>
     <color name="blackTwo">#808080</color>
     <color name="blackThree">#CCCCCC</color>
-    <color name="redOne">#FF6060</color>
+
+    <color name="yellowOne">#FFC507</color>
+    <color name="redOne">#FF3C2B</color>
 
     <color name="inputColor">#F3F3F3</color>
 
