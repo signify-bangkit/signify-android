@@ -31,15 +31,19 @@
         app:layout_constraintStart_toStartOf="@id/content_layout" />
 
     <View
+        android:id="@+id/circle_right"
         android:layout_width="320dp"
         android:layout_height="320dp"
         android:layout_marginEnd="-30dp"
         android:background="@drawable/ellips_reversed"
         android:backgroundTint="@color/blackOne"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:transitionName="circle_right_shared"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <View
+        android:transitionName="circle_left_shared"
+        android:id="@+id/circle_left"
         android:layout_width="340dp"
         android:layout_height="280dp"
         android:layout_marginStart="-34dp"

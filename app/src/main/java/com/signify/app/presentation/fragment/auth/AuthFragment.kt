@@ -46,7 +46,9 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
         binding.btnGetStarted.setOnClickListener {
             val extras = FragmentNavigatorExtras(
                 binding.contentLayout to "content_layout_shared",
-                binding.imageIllustration to "image_illustration_shared"
+                binding.imageIllustration to "image_illustration_shared",
+                binding.circleLeft to "circle_left_shared",
+                binding.circleRight to "circle_right_shared",
             )
             findNavController().navigate(
                 R.id.action_authFragment_to_loginFragment,

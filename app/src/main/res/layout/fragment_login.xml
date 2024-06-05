@@ -30,22 +30,27 @@
         app:layout_constraintStart_toStartOf="@id/content_layout" />
 
     <View
+        android:id="@+id/circle_left"
+        android:layout_height="340dp"
+        android:layout_marginStart="-34dp"
+        android:background="@drawable/ellips"
+        android:backgroundTint="@color/blackOne"
+        android:transitionName="circle_left_shared"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         android:layout_width="320dp"
-        android:layout_height="320dp"
+        />
+
+    <View
+        android:id="@+id/circle_right"
+        android:transitionName="circle_right_shared"
+        android:layout_width="320dp"
+        android:layout_height="360dp"
         android:layout_marginEnd="-30dp"
         android:background="@drawable/ellips_reversed"
         android:backgroundTint="@color/blackOne"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <View
-        android:layout_width="340dp"
-        android:layout_height="280dp"
-        android:layout_marginStart="-34dp"
-        android:background="@drawable/ellips"
-        android:backgroundTint="@color/blackOne"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

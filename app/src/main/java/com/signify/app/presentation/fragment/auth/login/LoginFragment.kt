@@ -46,7 +46,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             btnRegister.setOnClickListener {
                 val extras = FragmentNavigatorExtras(
                     contentLayout to "content_layout_shared",
-                    imageIllustration to "image_illustration_shared"
+                    imageIllustration to "image_illustration_shared",
+                    binding.circleLeft to "circle_left_shared",
+                    binding.circleRight to "circle_right_shared",
                 )
                 findNavController().navigate(
                     R.id.action_loginFragment_to_registerFragment,
