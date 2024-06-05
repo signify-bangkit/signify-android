@@ -26,6 +26,10 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
     }
 
     private fun initListener() {
+        with(binding) {
+            edPasswordWrapper.isHintEnabled = false
+            edConfirmPasswordWrapper.isHintEnabled = false
+        }
     }
 
     private fun initAnimation() {
@@ -59,13 +63,17 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
             ObjectAnimator.ofFloat(binding.labelPassword, View.ALPHA, 1f)
                 .setDuration(50)
         val inputPassword =
-            ObjectAnimator.ofFloat(binding.edPassword, View.ALPHA, 1f)
+            ObjectAnimator.ofFloat(binding.edPasswordWrapper, View.ALPHA, 1f)
                 .setDuration(50)
         val labelConfirmPassword =
             ObjectAnimator.ofFloat(binding.labelConfirmPassword, View.ALPHA, 1f)
                 .setDuration(50)
         val inputConfirmPassword =
-            ObjectAnimator.ofFloat(binding.edConfirmPassword, View.ALPHA, 1f)
+            ObjectAnimator.ofFloat(
+                binding.edConfirmPasswordWrapper,
+                View.ALPHA,
+                1f
+            )
                 .setDuration(50)
         val signUpButton =
             ObjectAnimator.ofFloat(binding.btnSignup, View.ALPHA, 1f)

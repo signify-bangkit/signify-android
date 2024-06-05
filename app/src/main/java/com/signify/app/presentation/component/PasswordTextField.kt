@@ -6,31 +6,50 @@ import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.signify.app.R
 
 class PasswordTextField @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null
-) : AppCompatEditText(context, attrs) {
+    context: Context,
+    attrs: AttributeSet? = null
+) :
+    AppCompatEditText(context, attrs) {
 
     init {
         inputType =
             InputType.TYPE_TEXT_VARIATION_PASSWORD or InputType.TYPE_CLASS_TEXT
         addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(
-                p0: CharSequence?, p1: Int, p2: Int, p3: Int
+                s: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
             ) {
             }
-
-            override fun afterTextChanged(p0: Editable?) {}
 
             override fun onTextChanged(
-                s: CharSequence?, start: Int, before: Int, count: Int
+                s: CharSequence?,
+                start: Int,
+                before: Int,
+                count: Int
             ) {
-                if (!s.isNullOrEmpty() && s.length < 8) error =
-                    context.getString(
-                        R.string.error_password
-                    )
+                val parent = parent.parent
+                if (parent is TextInputLayout) {
+                    parent.errorIconDrawable = null
+                    if (!s.isNullOrEmpty() && s.length < 8) {
+                        parent.error =
+                            context.getString(R.string.error_password)
+                        parent.boxStrokeColor =
+                            context.getColor(R.color.redOne)
+                    } else {
+                        parent.error = null
+                        parent.boxStrokeColor =
+                            context.getColor(R.color.transparent)
+                    }
+                }
             }
+
+            override fun afterTextChanged(s: Editable?) {}
         })
     }
 }

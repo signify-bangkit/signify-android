@@ -165,26 +165,43 @@
             android:fontFamily="@font/inter_regular"
             android:text="@string/password_title"
             android:textColor="@color/blackTwo"
-            app:layout_constraintStart_toStartOf="@id/ed_password"
+            app:layout_constraintStart_toStartOf="@id/ed_password_wrapper"
             app:layout_constraintTop_toBottomOf="@id/ed_email"
             tools:alpha="1"
             tools:layout_editor_absoluteY="381dp" />
 
-        <com.signify.app.presentation.component.PasswordTextField
-            android:id="@+id/ed_password"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ed_password_wrapper"
             android:layout_width="280dp"
             android:layout_height="40dp"
+            app:boxBackgroundColor="@color/inputColor"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@android:color/transparent"
+            app:boxStrokeWidth="0dp"
+            app:endIconMode="password_toggle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:alpha="0"
-            android:background="@drawable/bg_custom_input"
-            android:fontFamily="@font/inter_regular"
             android:hint="@string/placeholder_password"
-            android:includeFontPadding="false"
-            android:paddingHorizontal="10dp"
-            android:textSize="14dp"
-            app:layout_constraintEnd_toEndOf="@id/ed_email"
-            app:layout_constraintStart_toStartOf="@id/ed_email"
-            app:layout_constraintTop_toBottomOf="@id/label_password"
-            tools:alpha="1" />
+            app:layout_constraintTop_toBottomOf="@+id/label_password"
+            tools:alpha="1">
+
+            <com.signify.app.presentation.component.PasswordTextField
+                android:id="@+id/ed_password"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:includeFontPadding="false"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="10dp"
+                android:textSize="12sp"
+                tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/label_confirm_password"
@@ -195,26 +212,42 @@
             android:fontFamily="@font/inter_regular"
             android:text="@string/confirm_password_title"
             android:textColor="@color/blackTwo"
-            app:layout_constraintStart_toStartOf="@id/ed_confirm_password"
-            app:layout_constraintTop_toBottomOf="@id/ed_password"
+            app:layout_constraintStart_toStartOf="@id/ed_confirm_password_wrapper"
+            app:layout_constraintTop_toBottomOf="@id/ed_password_wrapper"
             tools:alpha="1"
             tools:layout_editor_absoluteY="381dp" />
 
-        <com.signify.app.presentation.component.PasswordTextField
-            android:id="@+id/ed_confirm_password"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ed_confirm_password_wrapper"
             android:layout_width="280dp"
             android:layout_height="40dp"
+            app:boxBackgroundColor="@color/inputColor"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@android:color/transparent"
+            app:boxStrokeWidth="0dp"
+            app:endIconMode="password_toggle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:alpha="0"
-            android:background="@drawable/bg_custom_input"
-            android:fontFamily="@font/inter_regular"
             android:hint="@string/placeholder_confirm_password"
-            android:includeFontPadding="false"
-            android:paddingHorizontal="10dp"
-            android:textSize="14dp"
-            app:layout_constraintEnd_toEndOf="@id/ed_password"
-            app:layout_constraintStart_toStartOf="@id/ed_password"
-            app:layout_constraintTop_toBottomOf="@id/label_confirm_password"
-            tools:alpha="1" />
+            app:layout_constraintTop_toBottomOf="@+id/label_confirm_password"
+            tools:alpha="1">
+
+            <com.signify.app.presentation.component.PasswordTextField
+                android:id="@+id/ed_confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:includeFontPadding="false"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="10dp"
+                android:textSize="12sp"
+                tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btn_signup"
@@ -229,7 +262,7 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ed_confirm_password"
+            app:layout_constraintTop_toBottomOf="@id/ed_confirm_password_wrapper"
             tools:alpha="1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

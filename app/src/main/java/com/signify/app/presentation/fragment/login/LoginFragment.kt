@@ -32,6 +32,17 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                 LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
             findNavController().navigate(direction)
         }
+        with(binding) {
+            edPasswordWrapper.isHintEnabled = false
+
+            // focus listener, weird this bug happened sometimes
+            //edPassword.apply {
+            //    setOnFocusChangeListener { _, hasFocus ->
+            //        edPasswordWrapper.isHintEnabled =
+            //            !(hasFocus || edPassword.text!!.isNotEmpty())
+            //    }
+            //}
+        }
     }
 
     private fun initAnimation() {
@@ -59,7 +70,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             ObjectAnimator.ofFloat(binding.labelPassword, View.ALPHA, 1f)
                 .setDuration(50)
         val inputPassword =
-            ObjectAnimator.ofFloat(binding.edPassword, View.ALPHA, 1f)
+            ObjectAnimator.ofFloat(binding.edPasswordWrapper, View.ALPHA, 1f)
                 .setDuration(50)
         val signInButton =
             ObjectAnimator.ofFloat(binding.btnLogin, View.ALPHA, 1f)
