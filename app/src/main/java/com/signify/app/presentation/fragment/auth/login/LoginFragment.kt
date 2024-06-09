@@ -2,11 +2,13 @@ package com.signify.app.presentation.fragment.auth.login
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.graphics.Color
 import android.os.Bundle
 import android.transition.ChangeBounds
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.signify.app.R
@@ -22,6 +24,18 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         return FragmentLoginBinding.inflate(inflater, container, false)
     }
 
+    private fun syncBarColor() {
+        activity?.window?.statusBarColor = Color.TRANSPARENT
+        activity?.window?.navigationBarColor =
+            context?.getColor(R.color.blackOne)!!
+        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        syncBarColor()
+    }
+
     override fun beforeSomething() {
         super.beforeSomething()
         sharedElementEnterTransition = ChangeBounds().apply {
@@ -35,6 +49,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     override fun doSomething() {
         super.doSomething()
 
+        syncBarColor()
         initListener()
         initAnimation()
     }
@@ -62,8 +77,15 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
                 val extras = FragmentNavigatorExtras(
                     contentLayout to "content_layout_shared",
+                    binding.circleLeft to "circle_left_shared",
+                    binding.circleRight to "circle_right_shared",
                 )
-                findNavController().navigate(R.id.action_loginFragment_to_homeFragment, null, null, extras)
+                findNavController().navigate(
+                    R.id.action_loginFragment_to_homeFragment,
+                    null,
+                    null,
+                    extras
+                )
             }
 
             // focus listener, weird this bug happened sometimes
