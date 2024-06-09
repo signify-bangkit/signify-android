@@ -28,6 +28,7 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity?.window?.statusBarColor = Color.TRANSPARENT
+        activity?.window?.navigationBarColor = context?.getColor(R.color.blackOne)!!
         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
 
         WindowCompat.getInsetsController(

@@ -21,10 +21,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun beforeSomething() {
         super.beforeSomething()
         sharedElementEnterTransition = ChangeBounds().apply {
-            duration = 300
+            duration = 500
         }
         sharedElementReturnTransition = ChangeBounds().apply {
-            duration = 300
+            duration = 500
         }
     }
 
