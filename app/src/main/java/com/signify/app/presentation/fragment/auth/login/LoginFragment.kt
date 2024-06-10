@@ -77,8 +77,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
                 val extras = FragmentNavigatorExtras(
                     contentLayout to "content_layout_shared",
-                    binding.circleLeft to "circle_left_shared",
-                    binding.circleRight to "circle_right_shared",
+                    circleLeft to "circle_left_shared",
+                    circleRight to "circle_right_shared",
+                    titleApp to "title_app",
                 )
                 findNavController().navigate(
                     R.id.action_loginFragment_to_homeFragment,

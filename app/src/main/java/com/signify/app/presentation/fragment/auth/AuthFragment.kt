@@ -51,7 +51,9 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
                 binding.imageIllustration to "image_illustration_shared",
                 binding.circleLeft to "circle_left_shared",
                 binding.circleRight to "circle_right_shared",
+                binding.titleApp to "title_app",
             )
+
             findNavController().navigate(
                 R.id.action_authFragment_to_loginFragment,
                 null,
