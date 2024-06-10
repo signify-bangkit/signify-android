@@ -54,10 +54,10 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
                 binding.titleApp to "title_app",
             )
 
+            val direction = AuthFragmentDirections.actionAuthFragmentToLoginFragment()
+
             findNavController().navigate(
-                R.id.action_authFragment_to_loginFragment,
-                null,
-                null,
+                direction,
                 extras
             )
         }

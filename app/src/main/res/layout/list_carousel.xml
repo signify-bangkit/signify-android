@@ -6,10 +6,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:shapeAppearance="?attr/shapeAppearanceCornerExtraLarge">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <ImageView
         android:id="@+id/carouselImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:transitionName="image_shared"
         android:scaleType="centerCrop"
         />
 

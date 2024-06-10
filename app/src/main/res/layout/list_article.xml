@@ -2,10 +2,10 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:backgroundTint="@color/inputColor"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="6dp">
+    android:layout_margin="6dp"
+    android:backgroundTint="@color/inputColor">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_title"
@@ -14,13 +14,14 @@
         android:padding="8dp">
 
         <ImageView
-            android:id="@+id/iv_itemNews"
+            android:id="@+id/image_photo"
             android:layout_width="100dp"
             android:layout_height="0dp"
-            android:padding="5dp"
             android:adjustViewBounds="true"
             android:maxHeight="250dp"
+            android:padding="5dp"
             android:scaleType="centerCrop"
+            android:transitionName="image_shared"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -36,7 +37,7 @@
             android:maxLines="1"
             android:textAppearance="?attr/textAppearanceBodyMedium"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/iv_itemNews"
+            app:layout_constraintStart_toEndOf="@id/image_photo"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@tools:sample/lorem/random" />
 
@@ -50,7 +51,7 @@
             android:maxLines="3"
             android:textAppearance="?attr/textAppearanceBodyMedium"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/iv_itemNews"
+            app:layout_constraintStart_toEndOf="@id/image_photo"
             app:layout_constraintTop_toBottomOf="@id/tv_title_news"
             tools:text="@tools:sample/lorem/random" />
 
@@ -61,7 +62,7 @@
             android:layout_margin="4dp"
             android:fontFamily="@font/inter_regular"
             android:textAppearance="?attr/textAppearanceCaption"
-            app:layout_constraintStart_toEndOf="@id/iv_itemNews"
+            app:layout_constraintStart_toEndOf="@id/image_photo"
             app:layout_constraintTop_toBottomOf="@+id/tv_descriptionNews"
             tools:text="@tools:sample/lorem" />
 

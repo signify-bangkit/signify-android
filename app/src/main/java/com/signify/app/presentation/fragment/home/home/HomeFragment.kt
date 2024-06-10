@@ -2,7 +2,6 @@ package com.signify.app.presentation.fragment.home.home
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
-import android.graphics.Color
 import android.os.Bundle
 import android.transition.ChangeBounds
 import android.view.LayoutInflater
@@ -10,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.core.view.WindowCompat
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -61,10 +61,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun beforeSomething() {
         super.beforeSomething()
         sharedElementEnterTransition = ChangeBounds().apply {
-            duration = 200
+            duration = 400
         }
         sharedElementReturnTransition = ChangeBounds().apply {
-            duration = 200
+            duration = 400
         }
     }
 
