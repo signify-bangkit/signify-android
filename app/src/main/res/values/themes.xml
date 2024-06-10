@@ -9,7 +9,7 @@
 
     <style name="Theme.Signify.Starting" parent="Theme.SplashScreen">
         <!-- Set the splash screen background to black -->
-        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenBackground">@color/blueOne</item>
         <!-- Use windowSplashScreenAnimatedIcon to add a drawable or an animated
              drawable. -->
         <item name="windowSplashScreenAnimatedIcon">@drawable/splash</item>
