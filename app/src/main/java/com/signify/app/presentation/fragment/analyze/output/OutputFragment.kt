@@ -14,4 +14,8 @@ class OutputFragment : BaseFragment<FragmentOutputBinding>() {
     ): FragmentOutputBinding {
         return FragmentOutputBinding.inflate(inflater, container, false)
     }
+
+    override fun onBackPressed() {
+        TODO("Not yet implemented")
+    }
 }

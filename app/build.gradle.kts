@@ -4,6 +4,7 @@ plugins {
     id("com.google.devtools.ksp")
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
+    id("de.undercouch.download") version "5.6.0"
 }
 
 android {
@@ -64,6 +65,7 @@ dependencies {
 
     // Room
     implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.camera.lifecycle)
     annotationProcessor(libs.androidx.room.compiler)
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
@@ -98,5 +100,21 @@ dependencies {
     testImplementation(libs.koin.test)
     testImplementation(libs.koin.test.junit4)
     testImplementation(libs.koin.test.junit5)
+
+    // Mediapipe Library
+    implementation ("com.google.mediapipe:tasks-vision:0.20230731")
+
+    // CameraX core library
+    val cameraxVersion = "1.3.4"
+    implementation ("androidx.camera:camera-core:$cameraxVersion")
+
+    // CameraX Camera2 extensions
+    implementation ("androidx.camera:camera-camera2:$cameraxVersion")
+
+    // CameraX View class
+    implementation ("androidx.camera:camera-view:$cameraxVersion")
+
+    // WindowManager
+    implementation ("androidx.window:window:1.1.0-alpha03")
 
 }

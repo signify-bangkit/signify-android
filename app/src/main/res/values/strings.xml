@@ -23,4 +23,10 @@
     <string name="placeholder_name">your name</string>
     <string name="placeholder_confirm_password">confirm password</string>
     <string name="sign_up_button_text">Sign Up</string>
+    <string name="menu_camera">Camera</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="backspace">Backspace</string>
+    <string name="add_space">Add Space</string>
+    <string name="tv_gallery_placeholder">Click + to add an image or video to begin running the...</string>
+    <string name="switch_camera">Switch Camera</string>
 </resources>
