@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/permissions_fragment"
-        android:name="com.signify.app.presentation.fragment.analyze.permission.PermissionsFragment"
+        android:name="com.signify.app.presentation.fragment.analyze.permission.PermissionFragment"
         android:label="PermissionsFragment">
 
         <action
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/camera_fragment"
-        android:name="com.google.mediapipe.examples.gesturerecognizer.fragment.CameraFragment"
+        android:name="com.signify.app.presentation.fragment.analyze.analyze.CameraFragment"
         android:label="CameraFragment">
 
         <action
@@ -31,6 +31,6 @@
 
     <fragment
         android:id="@+id/gallery_fragment"
-        android:name="com.google.mediapipe.examples.gesturerecognizer.fragment.GalleryFragment"
+        android:name="com.signify.app.presentation.fragment.analyze.analyze.GalleryFragment"
         android:label="GalleryFragment" />
 </navigation>

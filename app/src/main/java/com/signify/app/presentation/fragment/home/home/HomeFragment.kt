@@ -2,6 +2,7 @@ package com.signify.app.presentation.fragment.home.home
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.transition.ChangeBounds
 import android.view.LayoutInflater
@@ -9,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.core.view.WindowCompat
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +22,7 @@ import com.signify.app.data.model.News
 import com.signify.app.databinding.FragmentHomeBinding
 import com.signify.app.presentation.adapter.CarouselAdapter
 import com.signify.app.presentation.adapter.NewsAdapter
+import com.signify.app.presentation.fragment.analyze.analyze.AnalyzeActivity
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun assignBinding(
@@ -72,7 +73,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         super.doSomething()
 
         with(binding) {
-            btnAnalyze.setOnClickListener { findNavController().navigate(R.id.action_homeFragment_to_analyzeFragment) }
+//            btnAnalyze.setOnClickListener { findNavController().navigate(R.id.action_homeFragment_to_analyzeFragment) }
+            btnAnalyze.setOnClickListener {
+                val intent = Intent(requireContext(), AnalyzeActivity::class.java)
+                startActivity(intent)
+            }
             btnHistory.setOnClickListener { findNavController().navigate(R.id.action_homeFragment_to_historyFragment) }
 //            btnPerson.setOnClickListener { findNavController().navigate(R.id.action) }
         }

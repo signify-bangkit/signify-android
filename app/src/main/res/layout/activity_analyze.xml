@@ -20,14 +20,14 @@
             android:keepScreenOn="true"
             app:defaultNavHost="true"
             app:navGraph="@navigation/nav_graph"
-            tools:context=".MainActivity" />
+            tools:context=".AnalyzeActivity" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="#703FB5"
+            android:backgroundTint="#703FB5"
             app:itemIconTint="@color/bg_nav_item"
             app:itemTextColor="@color/bg_nav_item"
             app:menu="@menu/menu_bottom_nav" />
