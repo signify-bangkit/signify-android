@@ -52,11 +52,11 @@
             app:popExitAnim="@anim/slide_out_right"
             />
         <action
-            android:id="@+id/action_homeFragment_to_analyzeFragment"
-            app:destination="@id/analyzeFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_historyFragment"
             app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment" />
     </fragment>
     <fragment
         android:id="@+id/articleDetailFragment"
@@ -68,15 +68,6 @@
             app:argType="string" />
     </fragment>
     <fragment
-        android:id="@+id/analyzeFragment"
-        android:name="com.signify.app.presentation.fragment.analyze.analyze.AnalyzeActivity"
-        android:label="fragment_analyze"
-        tools:layout="@layout/activity_analize" >
-        <action
-            android:id="@+id/action_analyzeFragment_to_outputFragment"
-            app:destination="@id/outputFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/outputFragment"
         android:name="com.signify.app.presentation.fragment.analyze.output.OutputFragment"
         android:label="fragment_output"
@@ -86,4 +77,8 @@
         android:name="com.signify.app.presentation.fragment.history.history.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="com.signify.app.presentation.fragment.analyze.analyze.CameraFragment"
+        android:label="CameraFragment" />
 </navigation>

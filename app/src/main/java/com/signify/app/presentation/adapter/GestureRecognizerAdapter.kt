@@ -67,7 +67,7 @@ class GestureRecognizerAdapter :
     override fun getItemCount(): Int = adapterCategories.size
 
     private fun startLetterRecognition(letter: String?) {
-        if (letter == null || !letter.matches(Regex("[a-zA-Z]"))) {
+        if (letter == null || !letter.matches(Regex("[a-zA-Z0-9]"))) {
             resetTimer()
             return
         }

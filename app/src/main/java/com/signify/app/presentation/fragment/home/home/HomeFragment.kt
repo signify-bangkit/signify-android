@@ -22,7 +22,6 @@ import com.signify.app.data.model.News
 import com.signify.app.databinding.FragmentHomeBinding
 import com.signify.app.presentation.adapter.CarouselAdapter
 import com.signify.app.presentation.adapter.NewsAdapter
-import com.signify.app.presentation.fragment.analyze.analyze.AnalyzeActivity
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun assignBinding(
@@ -73,11 +72,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         super.doSomething()
 
         with(binding) {
-//            btnAnalyze.setOnClickListener { findNavController().navigate(R.id.action_homeFragment_to_analyzeFragment) }
-            btnAnalyze.setOnClickListener {
-                val intent = Intent(requireContext(), AnalyzeActivity::class.java)
-                startActivity(intent)
-            }
+            btnAnalyze.setOnClickListener { findNavController().navigate(R.id.action_homeFragment_to_cameraFragment) }
             btnHistory.setOnClickListener { findNavController().navigate(R.id.action_homeFragment_to_historyFragment) }
 //            btnPerson.setOnClickListener { findNavController().navigate(R.id.action) }
         }
