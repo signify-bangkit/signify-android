@@ -69,9 +69,9 @@
     </fragment>
     <fragment
         android:id="@+id/analyzeFragment"
-        android:name="com.signify.app.presentation.fragment.analyze.analyze.AnalyzeFragment"
+        android:name="com.signify.app.presentation.fragment.analyze.analyze.AnalyzeActivity"
         android:label="fragment_analyze"
-        tools:layout="@layout/fragment_analyze" >
+        tools:layout="@layout/activity_analize" >
         <action
             android:id="@+id/action_analyzeFragment_to_outputFragment"
             app:destination="@id/outputFragment" />
