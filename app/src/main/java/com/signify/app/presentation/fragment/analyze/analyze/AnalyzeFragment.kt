@@ -27,23 +27,8 @@ class AnalyzeFragment : BaseFragment<FragmentAnalyzeBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(binding) {
-            val navHostFragment =
-                childFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
-            val navController = navHostFragment.navController
-            navigation.setupWithNavController(navController)
-            navigation.setOnNavigationItemReselectedListener {
-                // ignore the reselection
-            }
-
-//            btnDeleteWord.setOnClickListener(deleteButtonClick())
-//            addSpaceButton.setOnClickListener(addSpaceButtonClick())
-        }
     }
 
-    override fun onBackPressed() {
-        activity?.finish()
-    }
 //        val textLabel = binding.textLabel
 //        Log.d("tes", textLabel.toString())
 

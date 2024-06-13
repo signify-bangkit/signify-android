@@ -42,5 +42,4 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         // Do something here
     }
 
-    abstract fun onBackPressed()
 }
