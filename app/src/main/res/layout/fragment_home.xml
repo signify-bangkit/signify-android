@@ -165,7 +165,7 @@
             android:src="@drawable/ic_history"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btn_person"
-            app:tint="@color/blueOne" />
+            app:tint="@color/blueThree" />
 
         <ImageButton
             android:id="@+id/btn_person"
@@ -175,7 +175,7 @@
             android:src="@drawable/ic_person"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:tint="@color/blueOne" />
+            app:tint="@color/blueThree" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

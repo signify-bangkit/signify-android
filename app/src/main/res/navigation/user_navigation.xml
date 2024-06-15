@@ -9,7 +9,7 @@
         android:id="@+id/authFragment"
         android:name="com.signify.app.presentation.fragment.auth.AuthFragment"
         android:label="fragment_auth"
-        tools:layout="@layout/fragment_auth" >
+        tools:layout="@layout/fragment_auth">
         <action
             android:id="@+id/action_authFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -23,7 +23,7 @@
         android:id="@+id/loginFragment"
         android:name="com.signify.app.presentation.fragment.auth.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
@@ -42,43 +42,60 @@
         android:id="@+id/homeFragment"
         android:name="com.signify.app.presentation.fragment.home.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_articleDetailFragment"
             app:destination="@id/articleDetailFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            />
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_homeFragment_to_historyFragment"
-            app:destination="@id/historyFragment" />
+            app:destination="@id/historyFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_homeFragment_to_cameraFragment"
-            app:destination="@id/cameraFragment" />
+            android:id="@+id/action_homeFragment_to_analyzeFragment"
+            app:destination="@id/analyzeFragment" />
     </fragment>
     <fragment
         android:id="@+id/articleDetailFragment"
         android:name="com.signify.app.presentation.fragment.home.article_detail.ArticleDetailFragment"
         android:label="fragment_article_detail"
-        tools:layout="@layout/fragment_article_detail" >
+        tools:layout="@layout/fragment_article_detail">
         <argument
             android:name="imageUrl"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.signify.app.presentation.fragment.history.history.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history">
+        <action
+            android:id="@+id/action_historyFragment_to_historyDetailFragment"
+            app:destination="@id/historyDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyDetailFragment"
+        android:name="com.signify.app.presentation.fragment.history.history_detail.HistoryDetailFragment"
+        android:label="fragment_history_detail"
+        tools:layout="@layout/fragment_history_detail" />
+    <fragment
+        android:id="@+id/analyzeFragment"
+        android:name="com.signify.app.presentation.fragment.analyze.analyze.AnalyzeFragment"
+        android:label="fragment_analyze"
+        tools:layout="@layout/fragment_analyze" >
+        <action
+            android:id="@+id/action_analyzeFragment_to_outputFragment"
+            app:destination="@id/outputFragment" />
     </fragment>
     <fragment
         android:id="@+id/outputFragment"
         android:name="com.signify.app.presentation.fragment.analyze.output.OutputFragment"
         android:label="fragment_output"
         tools:layout="@layout/fragment_output" />
-    <fragment
-        android:id="@+id/historyFragment"
-        android:name="com.signify.app.presentation.fragment.history.history.HistoryFragment"
-        android:label="fragment_history"
-        tools:layout="@layout/fragment_history" />
-    <fragment
-        android:id="@+id/cameraFragment"
-        android:name="com.signify.app.presentation.fragment.analyze.analyze.CameraFragment"
-        android:label="CameraFragment" />
 </navigation>

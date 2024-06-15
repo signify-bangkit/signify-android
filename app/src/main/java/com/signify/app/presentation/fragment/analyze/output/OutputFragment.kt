@@ -15,4 +15,10 @@ class OutputFragment : BaseFragment<FragmentOutputBinding>() {
         return FragmentOutputBinding.inflate(inflater, container, false)
     }
 
+    override fun doSomething() {
+        super.doSomething()
+        binding.btnBack.setOnClickListener {
+            activity?.onBackPressedDispatcher?.onBackPressed()
+        }
+    }
 }

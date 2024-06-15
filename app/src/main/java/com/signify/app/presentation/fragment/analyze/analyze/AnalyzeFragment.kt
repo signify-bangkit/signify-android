@@ -1,15 +1,17 @@
 package com.signify.app.presentation.fragment.analyze.analyze
 
+import android.Manifest
 import android.annotation.SuppressLint
+import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.AspectRatio
 import androidx.camera.core.Camera
 import androidx.camera.core.CameraSelector
@@ -18,40 +20,33 @@ import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.activityViewModels
-import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.google.mediapipe.tasks.vision.core.RunningMode
-import com.signify.app.R
-import com.signify.app.databinding.FragmentCameraBinding
-import com.signify.app.presentation.adapter.GestureRecognizerAdapter
-import com.signify.app.presentation.fragment.analyze.AnalyzeViewModel
+import com.signify.app.base.BaseFragment
+import com.signify.app.databinding.FragmentAnalyzeBinding
 import com.signify.app.presentation.fragment.analyze.GestureRecognizerHelper
-import com.signify.app.presentation.fragment.analyze.permission.PermissionFragment
+import com.signify.app.utils.showToast
+import java.util.Locale
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
-class CameraFragment : Fragment(),
+class AnalyzeFragment : BaseFragment<FragmentAnalyzeBinding>(),
     GestureRecognizerHelper.GestureRecognizerListener {
 
     companion object {
         private const val TAG = "Hand gesture recognizer"
     }
 
-    private var _fragmentCameraBinding: FragmentCameraBinding? = null
-
-    private val fragmentCameraBinding
-        get() = _fragmentCameraBinding!!
-
     private lateinit var gestureRecognizerHelper: GestureRecognizerHelper
-    private val viewModel: AnalyzeViewModel by activityViewModels()
-    private var defaultNumResults = 1
-    private val gestureRecognizerResultAdapter: GestureRecognizerAdapter by lazy {
-        GestureRecognizerAdapter().apply {
-            updateAdapterSize(defaultNumResults)
-        }
-    }
+    private val viewModel: AnalyzeViewModel by viewModels()
+
+    private val handler = Handler(Looper.getMainLooper())
+    private var currentLetter: String? = null
+    private var letterStartTime: Long = 0
+    private val scanDuration: Long = 1000
+
     private var preview: Preview? = null
     private var imageAnalyzer: ImageAnalysis? = null
     private var camera: Camera? = null
@@ -61,16 +56,41 @@ class CameraFragment : Fragment(),
     /** Blocking ML operations are performed using this executor */
     private lateinit var backgroundExecutor: ExecutorService
 
-    override fun onResume() {
-        super.onResume()
-        // Make sure that all permissions are still present, since the
-        // user could have removed them while the app was in paused state.
-        if (!PermissionFragment.hasPermissions(requireContext())) {
-            Navigation.findNavController(
-                requireActivity(), R.id.fragment_container
-            ).navigate(R.id.action_camera_to_permissions)
+    private val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                Toast.makeText(
+                    context,
+                    "Permission request granted",
+                    Toast.LENGTH_LONG
+                ).show()
+            } else {
+                Toast.makeText(
+                    context,
+                    "Permission request denied",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
 
+    override fun beforeSomething() {
+        super.beforeSomething()
+
+        if (ContextCompat.checkSelfPermission(
+                requireActivity(),
+                Manifest.permission.CAMERA
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            requestPermissionLauncher.launch(
+                Manifest.permission.CAMERA
+            )
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
         // Start the GestureRecognizerHelper again when users come back
         // to the foreground.
         backgroundExecutor.execute {
@@ -94,7 +114,6 @@ class CameraFragment : Fragment(),
     }
 
     override fun onDestroyView() {
-        _fragmentCameraBinding = null
         super.onDestroyView()
 
         // Shut down our background executor
@@ -104,35 +123,41 @@ class CameraFragment : Fragment(),
         )
     }
 
-    override fun onCreateView(
+    override fun assignBinding(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _fragmentCameraBinding =
-            FragmentCameraBinding.inflate(inflater, container, false)
-
-        return fragmentCameraBinding.root
+    ): FragmentAnalyzeBinding {
+        return FragmentAnalyzeBinding.inflate(inflater, container, false)
     }
 
-    @SuppressLint("MissingPermission")
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        with(fragmentCameraBinding.recyclerviewResults) {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = gestureRecognizerResultAdapter
-        }
-        val switchCameraButton: ImageView = view.findViewById(R.id.imgSwitchCamera)
+    override fun doSomething() {
+        super.doSomething()
 
-        // Set up a click listener
-        switchCameraButton.setOnClickListener {
+        binding.btnBack.setOnClickListener {
+            activity?.onBackPressedDispatcher?.onBackPressed()
+        }
+
+        binding.imgSwitchCamera.setOnClickListener {
             switchCamera()
         }
+
+        binding.btnSave.setOnClickListener {
+            val appended = binding.edResults.text
+            if (appended.isNotEmpty()) {
+                val direction =
+                    AnalyzeFragmentDirections.actionAnalyzeFragmentToOutputFragment()
+                findNavController().navigate(direction)
+            } else {
+                showToast(requireActivity(), "Result's Empty!")
+            }
+        }
+
         // Initialize our background executor
         backgroundExecutor = Executors.newSingleThreadExecutor()
 
         // Wait for the views to be properly laid out
-        fragmentCameraBinding.viewFinder.post {
+        binding.viewFinder.post {
             // Set up the camera and its use cases
             setUpCamera()
         }
@@ -166,6 +191,7 @@ class CameraFragment : Fragment(),
             }, ContextCompat.getMainExecutor(requireContext())
         )
     }
+
     // Inside the CameraFragment class
     private fun switchCamera() {
         // Toggle between front and back cameras
@@ -176,7 +202,7 @@ class CameraFragment : Fragment(),
         }
 
         // Update the isCameraFrontFacing value in OverlayView
-        fragmentCameraBinding.overlay.updateCameraFrontFacing(cameraFacing == CameraSelector.LENS_FACING_FRONT)
+        binding.overlay.updateCameraFrontFacing(cameraFacing == CameraSelector.LENS_FACING_FRONT)
 
         // Rebind the camera use cases with the new camera facing
         bindCameraUseCases()
@@ -196,13 +222,13 @@ class CameraFragment : Fragment(),
 
         // Preview. Only using the 4:3 ratio because this is the closest to our models
         preview = Preview.Builder().setTargetAspectRatio(AspectRatio.RATIO_4_3)
-            .setTargetRotation(fragmentCameraBinding.viewFinder.display.rotation)
+            .setTargetRotation(binding.viewFinder.display.rotation)
             .build()
 
         // ImageAnalysis. Using RGBA 8888 to match how our models work
         imageAnalyzer =
             ImageAnalysis.Builder().setTargetAspectRatio(AspectRatio.RATIO_4_3)
-                .setTargetRotation(fragmentCameraBinding.viewFinder.display.rotation)
+                .setTargetRotation(binding.viewFinder.display.rotation)
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                 .setOutputImageFormat(ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888)
                 .build()
@@ -224,13 +250,11 @@ class CameraFragment : Fragment(),
             )
 
             // Attach the viewfinder's surface provider to preview use case
-            preview?.setSurfaceProvider(fragmentCameraBinding.viewFinder.surfaceProvider)
+            preview?.setSurfaceProvider(binding.viewFinder.surfaceProvider)
         } catch (exc: Exception) {
             Log.e(TAG, "Use case binding failed", exc)
         }
     }
-
-
 
 
     private fun recognizeHand(imageProxy: ImageProxy) {
@@ -242,7 +266,7 @@ class CameraFragment : Fragment(),
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         imageAnalyzer?.targetRotation =
-            fragmentCameraBinding.viewFinder.display.rotation
+            binding.viewFinder.display.rotation
     }
 
     // Update UI after a hand gesture has been recognized. Extracts original
@@ -253,38 +277,74 @@ class CameraFragment : Fragment(),
         resultBundle: GestureRecognizerHelper.ResultBundle
     ) {
         activity?.runOnUiThread {
-            if (_fragmentCameraBinding != null) {
-                // Show result of recognized gesture
-                val gestureCategories = resultBundle.results.first().gestures()
+            // Show result of recognized gesture
+            val gestureCategories = resultBundle.results.first().gestures()
+            with(binding) {
                 if (gestureCategories.isNotEmpty()) {
-                    gestureRecognizerResultAdapter.updateResults(
-                        gestureCategories.first()
-                    )
+                    val gesture = gestureCategories.first()
+                        .sortedByDescending { it.score() }
+                    val score = gesture.first().score()
+                    val category = gesture.first().categoryName().toString()
+
+                    Log.d("GESTURE", "onResults: $gesture")
+
+                    scoreText.text = String.format(Locale.US, "%.2f", score)
+                    categoryText.text = category
+
+                    appendCategory(category)
+
                 } else {
-                    gestureRecognizerResultAdapter.updateResults(emptyList())
+                    scoreText.text = "--"
+                    categoryText.text = "--"
                 }
-
-//                fragmentCameraBinding.bottomSheetLayout.inferenceTimeVal.text =
-//                    String.format("%d ms", resultBundle.inferenceTime)
-
-                // Pass necessary information to OverlayView for drawing on the canvas
-                fragmentCameraBinding.overlay.setResults(
-                    resultBundle.results.first(),
-                    resultBundle.inputImageHeight,
-                    resultBundle.inputImageWidth,
-                    RunningMode.LIVE_STREAM
-                )
-
-                // Force a redraw
-                fragmentCameraBinding.overlay.invalidate()
             }
+
+            // Pass necessary information to OverlayView for drawing on the canvas
+            binding.overlay.setResults(
+                resultBundle.results.first(),
+                resultBundle.inputImageHeight,
+                resultBundle.inputImageWidth,
+                RunningMode.LIVE_STREAM
+            )
+
+            // Force a redraw
+            binding.overlay.invalidate()
         }
+    }
+
+    private fun appendCategory(letter: String?) {
+        if (letter == null || !letter.matches(Regex("[a-zA-Z0-9]"))) {
+            resetTimer()
+            return
+        }
+
+        if (letter == currentLetter) {
+            if (System.currentTimeMillis() - letterStartTime >= scanDuration) {
+                binding.edResults.append(letter)
+                resetTimer()
+            }
+        } else {
+            resetTimer()
+            currentLetter = letter
+            letterStartTime = System.currentTimeMillis()
+            handler.postDelayed({
+                if (currentLetter == letter) {
+                    binding.edResults.append(letter)
+                    resetTimer()
+                }
+            }, scanDuration)
+        }
+    }
+
+    private fun resetTimer() {
+        currentLetter = null
+        letterStartTime = 0
+        handler.removeCallbacksAndMessages(null)
     }
 
     override fun onError(error: String, errorCode: Int) {
         activity?.runOnUiThread {
             Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
-            gestureRecognizerResultAdapter.updateResults(emptyList())
         }
     }
 }

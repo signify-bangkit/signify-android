@@ -1,15 +1,16 @@
-package com.signify.app.presentation.fragment.analyze
+package com.signify.app.presentation.fragment.analyze.analyze
 
 import androidx.lifecycle.ViewModel
+import com.signify.app.presentation.fragment.analyze.GestureRecognizerHelper
 
 class AnalyzeViewModel : ViewModel() {
     private var _delegate: Int = GestureRecognizerHelper.DELEGATE_CPU
     private var _minHandDetectionConfidence: Float =
         GestureRecognizerHelper.DEFAULT_HAND_DETECTION_CONFIDENCE
-    private var _minHandTrackingConfidence: Float = GestureRecognizerHelper
-        .DEFAULT_HAND_TRACKING_CONFIDENCE
-    private var _minHandPresenceConfidence: Float = GestureRecognizerHelper
-        .DEFAULT_HAND_PRESENCE_CONFIDENCE
+    private var _minHandTrackingConfidence: Float =
+        GestureRecognizerHelper.DEFAULT_HAND_TRACKING_CONFIDENCE
+    private var _minHandPresenceConfidence: Float =
+        GestureRecognizerHelper.DEFAULT_HAND_PRESENCE_CONFIDENCE
     val currentDelegate: Int get() = _delegate
     val currentMinHandDetectionConfidence: Float
         get() =

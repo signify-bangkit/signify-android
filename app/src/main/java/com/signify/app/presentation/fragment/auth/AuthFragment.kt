@@ -42,6 +42,8 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
     override fun doSomething() {
         initListener()
         initAnimation()
+
+        findNavController().navigate(R.id.action_authFragment_to_homeFragment)
     }
 
     private fun initListener() {

@@ -34,7 +34,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun syncBarColor() {
         activity?.window?.statusBarColor =
-            context?.getColor(R.color.blueOneBar)!!
+            context?.getColor(R.color.blueOne)!!
         activity?.window?.navigationBarColor =
             context?.getColor(R.color.white)!!
         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
@@ -72,7 +72,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         super.doSomething()
 
         with(binding) {
-            btnAnalyze.setOnClickListener { findNavController().navigate(R.id.action_homeFragment_to_cameraFragment) }
+            btnAnalyze.setOnClickListener { findNavController().navigate(R.id.action_homeFragment_to_analyzeFragment) }
             btnHistory.setOnClickListener { findNavController().navigate(R.id.action_homeFragment_to_historyFragment) }
 //            btnPerson.setOnClickListener { findNavController().navigate(R.id.action) }
         }
