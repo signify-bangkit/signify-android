@@ -1,6 +1,7 @@
 package com.signify.app.presentation.fragment.analyze.output
 
 import android.os.Bundle
+import android.transition.ChangeBounds
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.signify.app.base.BaseFragment
@@ -13,6 +14,16 @@ class OutputFragment : BaseFragment<FragmentOutputBinding>() {
         savedInstanceState: Bundle?
     ): FragmentOutputBinding {
         return FragmentOutputBinding.inflate(inflater, container, false)
+    }
+
+    override fun beforeSomething() {
+        super.beforeSomething()
+        sharedElementEnterTransition = ChangeBounds().apply {
+            duration = 400
+        }
+        sharedElementReturnTransition = ChangeBounds().apply {
+            duration = 400
+        }
     }
 
     override fun doSomething() {

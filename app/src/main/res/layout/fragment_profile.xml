@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".presentation.fragment.history.history.HistoryFragment">
+    tools:context=".presentation.fragment.profile.ProfileFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/top_bar"
@@ -23,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:fontFamily="@font/inter_bold"
-            android:text="History"
+            android:text="Profile"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:transitionName="title_app" />
@@ -61,7 +60,7 @@
             android:src="@drawable/ic_history"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btn_person"
-            app:tint="@color/blueOne" />
+            app:tint="@color/blueThree" />
 
         <ImageButton
             android:id="@+id/btn_person"
@@ -71,7 +70,7 @@
             android:src="@drawable/ic_person"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:tint="@color/blueThree" />
+            app:tint="@color/blueOne" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -101,4 +100,5 @@
             app:tint="@color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

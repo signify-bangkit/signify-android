@@ -1,4 +1,4 @@
-package com.signify.app.presentation.fragment.history.history
+package com.signify.app.presentation.fragment.profile
 
 import android.os.Bundle
 import android.transition.ChangeBounds
@@ -8,15 +8,15 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.signify.app.R
 import com.signify.app.base.BaseFragment
-import com.signify.app.databinding.FragmentHistoryBinding
+import com.signify.app.databinding.FragmentProfileBinding
 
-class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
+class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     override fun assignBinding(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): FragmentHistoryBinding {
-        return FragmentHistoryBinding.inflate(inflater, container, false)
+    ): FragmentProfileBinding {
+        return FragmentProfileBinding.inflate(inflater, container, false)
     }
 
     override fun beforeSomething() {
@@ -41,31 +41,21 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
                     contentLayout to "content_layout_shared",
                     toolbarTitle to "title_app",
                 )
-                findNavController().navigate(
-                    R.id.action_global_analyzeFragment,
-                    null,
-                    null,
-                    extras
-                )
+                findNavController().navigate(R.id.action_global_analyzeFragment, null,null, extras)
             }
             btnHome.setOnClickListener {
                 val extras = FragmentNavigatorExtras(
                     toolbarTitle to "title_app",
                 )
-                findNavController().navigate(
-                    R.id.action_global_homeFragment,
-                    null,
-                    null,
-                    extras
-                )
+                findNavController().navigate(R.id.action_global_homeFragment, null, null, extras)
             }
-            btnPerson.setOnClickListener {
+            btnHistory.setOnClickListener {
                 val extras = FragmentNavigatorExtras(
                     contentLayout to "content_layout_shared",
                     toolbarTitle to "title_app",
                 )
                 findNavController().navigate(
-                    R.id.action_global_profileFragment,
+                    R.id.action_global_historyFragment,
                     null,
                     null,
                     extras

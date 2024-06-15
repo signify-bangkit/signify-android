@@ -50,16 +50,6 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
-        <action
-            android:id="@+id/action_homeFragment_to_historyFragment"
-            app:destination="@id/historyFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-        <action
-            android:id="@+id/action_homeFragment_to_analyzeFragment"
-            app:destination="@id/analyzeFragment" />
     </fragment>
     <fragment
         android:id="@+id/articleDetailFragment"
@@ -88,7 +78,7 @@
         android:id="@+id/analyzeFragment"
         android:name="com.signify.app.presentation.fragment.analyze.analyze.AnalyzeFragment"
         android:label="fragment_analyze"
-        tools:layout="@layout/fragment_analyze" >
+        tools:layout="@layout/fragment_analyze">
         <action
             android:id="@+id/action_analyzeFragment_to_outputFragment"
             app:destination="@id/outputFragment" />
@@ -98,4 +88,53 @@
         android:name="com.signify.app.presentation.fragment.analyze.output.OutputFragment"
         android:label="fragment_output"
         tools:layout="@layout/fragment_output" />
+    <action
+        android:id="@+id/action_global_analyzeFragment"
+        app:destination="@id/analyzeFragment"
+        app:popUpToInclusive="false" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.signify.app.presentation.fragment.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_changeLanguageFragment"
+            app:destination="@id/changeLanguageFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_termsConditionsFragment"
+            app:destination="@id/termsConditionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.signify.app.presentation.fragment.profile.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/changeLanguageFragment"
+        android:name="com.signify.app.presentation.fragment.profile.ChangeLanguageFragment"
+        android:label="fragment_change_language"
+        tools:layout="@layout/fragment_change_language" />
+    <fragment
+        android:id="@+id/termsConditionsFragment"
+        android:name="com.signify.app.presentation.fragment.profile.TermsConditionsFragment"
+        android:label="fragment_terms_conditions"
+        tools:layout="@layout/fragment_terms_conditions" />
+    <action
+        android:id="@+id/action_global_historyFragment"
+        app:destination="@id/historyFragment"
+        app:popUpTo="@id/user_navigation.xml"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_profileFragment"
+        app:destination="@id/profileFragment"
+        app:popUpTo="@id/user_navigation.xml"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment"
+        app:popUpTo="@id/user_navigation.xml"
+        app:popUpToInclusive="true" />
 </navigation>

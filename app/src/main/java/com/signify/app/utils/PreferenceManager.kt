@@ -2,7 +2,7 @@ package com.signify.app.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.signify.app.data.model.dto.auth.LoginResponse
+import com.signify.app.data.auth.LoginResponse
 
 class PreferenceManager(context: Context) {
     private var prefs: SharedPreferences =

@@ -3,19 +3,17 @@ package com.signify.app.presentation.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.ViewCompat
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
-import com.signify.app.data.model.News
+import com.signify.app.data.article.Article
 import com.signify.app.databinding.ListArticleBinding
 import com.signify.app.presentation.fragment.home.home.HomeFragmentDirections
 
 class NewsAdapter(
     private val context: Context,
-    private val newsList: List<News>
+    private val articleList: List<Article>
 ) :
     RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
@@ -32,24 +30,24 @@ class NewsAdapter(
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        val newsItem = newsList[position]
+        val newsItem = articleList[position]
         holder.bind(newsItem)
     }
 
     override fun getItemCount(): Int {
-        return newsList.size
+        return articleList.size
     }
 
     inner class NewsViewHolder(private val binding: ListArticleBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(newsItem: News) {
-            binding.tvTitleNews.text = newsItem.title
-            binding.tvDescriptionNews.text = newsItem.description
-            binding.tvAuthorNews.text = newsItem.author
-            binding.tvDateNews.text = newsItem.date
+        fun bind(articleItem: Article) {
+            binding.tvTitleNews.text = articleItem.title
+            binding.tvDescriptionNews.text = articleItem.description
+            binding.tvAuthorNews.text = articleItem.author
+            binding.tvDateNews.text = articleItem.date
 
-            binding.imagePhoto.load(newsItem.imageUrl) {
+            binding.imagePhoto.load(articleItem.imageUrl) {
                 transformations(RoundedCornersTransformation(25f))
             }
 
@@ -59,7 +57,7 @@ class NewsAdapter(
             binding.root.setOnClickListener {
                 val action =
                     HomeFragmentDirections.actionHomeFragmentToArticleDetailFragment(
-                        newsItem.imageUrl
+                        articleItem.imageUrl
                     )
                 it.findNavController().navigate(action)
             }

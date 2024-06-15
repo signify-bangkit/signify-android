@@ -1,4 +1,4 @@
-package com.signify.app.data.model.dto.auth
+package com.signify.app.data.auth
 
 import com.squareup.moshi.JsonClass
 import com.squareup.moshi.Json

@@ -2,14 +2,15 @@ package com.signify.app.presentation.fragment.home.home
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
-import android.content.Intent
 import android.os.Bundle
+import android.text.Layout.Directions
 import android.transition.ChangeBounds
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.core.view.WindowCompat
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +19,7 @@ import com.google.android.material.carousel.CarouselSnapHelper
 import com.google.android.material.carousel.HeroCarouselStrategy
 import com.signify.app.R
 import com.signify.app.base.BaseFragment
-import com.signify.app.data.model.News
+import com.signify.app.data.article.Article
 import com.signify.app.databinding.FragmentHomeBinding
 import com.signify.app.presentation.adapter.CarouselAdapter
 import com.signify.app.presentation.adapter.NewsAdapter
@@ -71,17 +72,49 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun doSomething() {
         super.doSomething()
 
-        with(binding) {
-            btnAnalyze.setOnClickListener { findNavController().navigate(R.id.action_homeFragment_to_analyzeFragment) }
-            btnHistory.setOnClickListener { findNavController().navigate(R.id.action_homeFragment_to_historyFragment) }
-//            btnPerson.setOnClickListener { findNavController().navigate(R.id.action) }
-        }
-
         newsAdapter = NewsAdapter(requireContext(), getDummyNews())
 
         initAnimation()
+        initListener()
         setupCarouselRecyclerView()
         setupNewsRecyclerView()
+    }
+
+    private fun initListener() {
+        with(binding) {
+            btnAnalyze.setOnClickListener {
+                val extras = FragmentNavigatorExtras(
+                    contentLayout to "content_layout_shared",
+                    toolbarTitle to "title_app",
+                )
+                findNavController().navigate(R.id.action_global_analyzeFragment, null,null, extras)
+            }
+            btnHistory.setOnClickListener {
+                val extras = FragmentNavigatorExtras(
+                    contentLayout to "content_layout_shared",
+                    toolbarTitle to "title_app",
+                )
+                findNavController().navigate(
+                    R.id.action_global_historyFragment,
+                    null,
+                    null,
+                    extras
+                )
+            }
+            btnPerson.setOnClickListener {
+                val extras = FragmentNavigatorExtras(
+                    contentLayout to "content_layout_shared",
+                    toolbarTitle to "title_app",
+                )
+                findNavController().navigate(
+                    R.id.action_global_profileFragment,
+                    null,
+                    null,
+                    extras
+                )
+            }
+        }
+
     }
 
 
@@ -130,44 +163,44 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         binding.recyclerNews.adapter = newsAdapter
     }
 
-    private fun getDummyNews(): MutableList<News> {
+    private fun getDummyNews(): MutableList<Article> {
         return mutableListOf(
-            News(
+            Article(
                 title = "Title 1",
                 description = "Description 1",
                 author = "Author 1",
                 date = "Date 1",
                 imageUrl = "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg"
             ),
-            News(
+            Article(
                 title = "Title 2",
                 description = "Description 2",
                 author = "Author 2",
                 date = "Date 2",
                 imageUrl = "https://i.pinimg.com/564x/06/6f/b2/066fb2bd6a2f623a340239ed25db389d.jpg"
             ),
-            News(
+            Article(
                 title = "Title 3",
                 description = "Description 3",
                 author = "Author 3",
                 date = "Date 3",
                 imageUrl = "https://i.pinimg.com/564x/aa/48/fe/aa48fe1ed1162094d329a1cbe720bf8c.jpg"
             ),
-            News(
+            Article(
                 title = "Title 4",
                 description = "Description 4",
                 author = "Author 4",
                 date = "Date 4",
                 imageUrl = "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg"
             ),
-            News(
+            Article(
                 title = "Title 5",
                 description = "Description 5",
                 author = "Author 5",
                 date = "Date 5",
                 imageUrl = "https://i.pinimg.com/564x/95/68/6a/95686a79fda78c1d70ca6bbc09587977.jpg"
             ),
-            News(
+            Article(
                 title = "Title 6",
                 description = "Description 5",
                 author = "Author 5",

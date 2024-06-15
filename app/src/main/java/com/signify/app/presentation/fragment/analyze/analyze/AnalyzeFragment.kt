@@ -7,6 +7,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.transition.ChangeBounds
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -21,6 +22,7 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.google.mediapipe.tasks.vision.core.RunningMode
 import com.signify.app.base.BaseFragment
@@ -78,6 +80,13 @@ class AnalyzeFragment : BaseFragment<FragmentAnalyzeBinding>(),
     override fun beforeSomething() {
         super.beforeSomething()
 
+        sharedElementEnterTransition = ChangeBounds().apply {
+            duration = 400
+        }
+        sharedElementReturnTransition = ChangeBounds().apply {
+            duration = 400
+        }
+
         if (ContextCompat.checkSelfPermission(
                 requireActivity(),
                 Manifest.permission.CAMERA
@@ -134,24 +143,7 @@ class AnalyzeFragment : BaseFragment<FragmentAnalyzeBinding>(),
     override fun doSomething() {
         super.doSomething()
 
-        binding.btnBack.setOnClickListener {
-            activity?.onBackPressedDispatcher?.onBackPressed()
-        }
-
-        binding.imgSwitchCamera.setOnClickListener {
-            switchCamera()
-        }
-
-        binding.btnSave.setOnClickListener {
-            val appended = binding.edResults.text
-            if (appended.isNotEmpty()) {
-                val direction =
-                    AnalyzeFragmentDirections.actionAnalyzeFragmentToOutputFragment()
-                findNavController().navigate(direction)
-            } else {
-                showToast(requireActivity(), "Result's Empty!")
-            }
-        }
+        initListener()
 
         // Initialize our background executor
         backgroundExecutor = Executors.newSingleThreadExecutor()
@@ -175,6 +167,31 @@ class AnalyzeFragment : BaseFragment<FragmentAnalyzeBinding>(),
                 gestureRecognizerListener = this
             )
         }
+    }
+
+    private fun initListener() {
+        binding.btnBack.setOnClickListener {
+            activity?.onBackPressedDispatcher?.onBackPressed()
+        }
+
+        binding.imgSwitchCamera.setOnClickListener {
+            switchCamera()
+        }
+
+        binding.btnSave.setOnClickListener {
+            val appended = binding.edResults.text
+            if (appended.isNotEmpty()) {
+                val extras = FragmentNavigatorExtras(
+                    binding.contentLayoutText to "content_layout_shared",
+                )
+                val direction =
+                    AnalyzeFragmentDirections.actionAnalyzeFragmentToOutputFragment()
+                findNavController().navigate(direction, extras)
+            } else {
+                showToast(requireActivity(), "Result's Empty!")
+            }
+        }
+
     }
 
     // Initialize CameraX, and prepare to bind the camera use cases

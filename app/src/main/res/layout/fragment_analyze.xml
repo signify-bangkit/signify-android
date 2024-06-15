@@ -48,7 +48,6 @@
         android:background="@drawable/bg_rounded_border"
         android:paddingHorizontal="10dp"
         android:paddingVertical="5dp"
-        android:transitionName="content_layout_shared"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_bar">

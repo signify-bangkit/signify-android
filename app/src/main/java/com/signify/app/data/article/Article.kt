@@ -1,6 +1,6 @@
-package com.signify.app.data.model
+package com.signify.app.data.article
 
-class News (
+class Article (
     val title: String,
     val description: String,
     val author: String,
