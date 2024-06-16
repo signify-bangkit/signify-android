@@ -40,7 +40,7 @@
                         android:layout_marginTop="85dp"
                         android:fontFamily="@font/inter_semi"
                         android:paddingBottom="10dp"
-                        android:text="Today's Recent Converted SL"
+                        android:text="Today's SL Article"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -73,7 +73,7 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/inter_bold"
                         android:textColor="@color/white"
-                        android:text="Hi, Raihan"
+                        android:text="Hi, Raihan 👋"
                         android:transitionName="title_app"
                         android:textSize="20sp" />
                 </com.google.android.material.appbar.MaterialToolbar>
@@ -93,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
                     android:fontFamily="@font/inter_semi"
-                    android:text="Article About Sign Language"
+                    android:text="More articles"
                     android:textSize="16sp" />
             </com.google.android.material.appbar.MaterialToolbar>
 

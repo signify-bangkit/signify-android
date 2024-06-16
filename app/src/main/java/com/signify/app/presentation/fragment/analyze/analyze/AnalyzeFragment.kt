@@ -183,6 +183,7 @@ class AnalyzeFragment : BaseFragment<FragmentAnalyzeBinding>(),
             if (appended.isNotEmpty()) {
                 val extras = FragmentNavigatorExtras(
                     binding.contentLayoutText to "content_layout_shared",
+                    binding.btnSave to "btn_save",
                 )
                 val direction =
                     AnalyzeFragmentDirections.actionAnalyzeFragmentToOutputFragment()

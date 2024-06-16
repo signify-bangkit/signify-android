@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
+    app:strokeColor="@color/white"
     android:backgroundTint="@color/inputColor">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,7 +32,7 @@
             android:id="@+id/tv_title_news"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
+            android:layout_marginLeft="4dp"
             android:ellipsize="end"
             android:fontFamily="@font/inter_bold"
             android:maxLines="1"
@@ -45,35 +46,22 @@
             android:id="@+id/tv_descriptionNews"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
             android:ellipsize="end"
             android:fontFamily="@font/inter_medium"
             android:maxLines="3"
             android:textAppearance="?attr/textAppearanceBodyMedium"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/image_photo"
+            app:layout_constraintStart_toStartOf="@id/tv_title_news"
             app:layout_constraintTop_toBottomOf="@id/tv_title_news"
             tools:text="@tools:sample/lorem/random" />
-
-        <TextView
-            android:id="@+id/tv_authorNews"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:fontFamily="@font/inter_regular"
-            android:textAppearance="?attr/textAppearanceCaption"
-            app:layout_constraintStart_toEndOf="@id/image_photo"
-            app:layout_constraintTop_toBottomOf="@+id/tv_descriptionNews"
-            tools:text="@tools:sample/lorem" />
 
         <TextView
             android:id="@+id/tv_dateNews"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
             android:fontFamily="@font/inter_regular"
             android:textAppearance="?attr/textAppearanceCaption"
-            app:layout_constraintStart_toEndOf="@+id/tv_authorNews"
+            app:layout_constraintStart_toStartOf="@id/tv_descriptionNews"
             app:layout_constraintTop_toBottomOf="@+id/tv_descriptionNews"
             tools:text="@tools:sample/date/day_of_week" />
 

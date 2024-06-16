@@ -8,7 +8,7 @@
     <string name="email_title">Email</string>
     <string name="password_title">Password</string>
     <string name="go_to_signup">Wanna sign up first?</string>
-    <string name="name_title">Name</string>
+    <string name="name_title">First Name</string>
     <string name="confirm_password_title">Confirm Password</string>
     <string name="login_greetings_text">Welcome Back!</string>
     <string name="login_greetings_desc_text">Hello there! welcome to Signify. To enter the app please log in first.</string>
@@ -29,4 +29,5 @@
     <string name="add_space">Add Space</string>
     <string name="tv_gallery_placeholder">Click + to add an image or video to begin running the...</string>
     <string name="switch_camera">Switch Camera</string>
+    <string name="email_or_password_empty">Email or password empty!</string>
 </resources>

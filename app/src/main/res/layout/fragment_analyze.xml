@@ -137,6 +137,7 @@
         android:backgroundTint="@color/blueOne"
         android:fontFamily="@font/inter_bold"
         android:text="Save Output"
+        android:transitionName="btn_save"
         android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@id/imgSwitchCamera"
         app:layout_constraintStart_toStartOf="parent"

@@ -44,7 +44,6 @@ class NewsAdapter(
         fun bind(articleItem: Article) {
             binding.tvTitleNews.text = articleItem.title
             binding.tvDescriptionNews.text = articleItem.description
-            binding.tvAuthorNews.text = articleItem.author
             binding.tvDateNews.text = articleItem.date
 
             binding.imagePhoto.load(articleItem.imageUrl) {

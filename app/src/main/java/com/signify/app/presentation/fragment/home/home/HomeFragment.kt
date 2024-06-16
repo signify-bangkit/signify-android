@@ -166,46 +166,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private fun getDummyNews(): MutableList<Article> {
         return mutableListOf(
             Article(
-                title = "Title 1",
+                title = "Not",
                 description = "Description 1",
-                author = "Author 1",
                 date = "Date 1",
                 imageUrl = "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg"
             ),
             Article(
-                title = "Title 2",
+                title = "Implemented",
                 description = "Description 2",
-                author = "Author 2",
                 date = "Date 2",
                 imageUrl = "https://i.pinimg.com/564x/06/6f/b2/066fb2bd6a2f623a340239ed25db389d.jpg"
             ),
             Article(
-                title = "Title 3",
+                title = "Yet",
                 description = "Description 3",
-                author = "Author 3",
                 date = "Date 3",
                 imageUrl = "https://i.pinimg.com/564x/aa/48/fe/aa48fe1ed1162094d329a1cbe720bf8c.jpg"
-            ),
-            Article(
-                title = "Title 4",
-                description = "Description 4",
-                author = "Author 4",
-                date = "Date 4",
-                imageUrl = "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg"
-            ),
-            Article(
-                title = "Title 5",
-                description = "Description 5",
-                author = "Author 5",
-                date = "Date 5",
-                imageUrl = "https://i.pinimg.com/564x/95/68/6a/95686a79fda78c1d70ca6bbc09587977.jpg"
-            ),
-            Article(
-                title = "Title 6",
-                description = "Description 5",
-                author = "Author 5",
-                date = "Date 5",
-                imageUrl = "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg"
             ),
         )
     }

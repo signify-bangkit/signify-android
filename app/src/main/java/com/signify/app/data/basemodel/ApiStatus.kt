@@ -1,4 +1,4 @@
-package com.signify.app.data
+package com.signify.app.data.basemodel
 
 sealed class ApiStatus<out R> {
     data class Success<out T>(val data: T) : ApiStatus<T>()

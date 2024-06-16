@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.fragment.auth.login.LoginFragment">
+    tools:context=".presentation.fragment.login.LoginFragment">
 
     <TextView
         android:id="@+id/title_app"
@@ -134,6 +134,36 @@
             tools:alpha="1" />
 
         <TextView
+            android:id="@+id/label_name_last"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:alpha="0"
+            android:fontFamily="@font/inter_regular"
+            android:text="Last Name"
+            android:textColor="@color/blackTwo"
+            app:layout_constraintStart_toStartOf="@id/ed_name"
+            app:layout_constraintTop_toBottomOf="@id/ed_name"
+            tools:alpha="1"
+            tools:layout_editor_absoluteY="381dp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_name_last"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:alpha="0"
+            android:background="@drawable/bg_custom_input"
+            android:fontFamily="@font/inter_regular"
+            android:hint="@string/placeholder_name"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="10dp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_name_last"
+            tools:alpha="1" />
+
+        <TextView
             android:id="@+id/label_email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -143,7 +173,7 @@
             android:text="@string/email_title"
             android:textColor="@color/blackTwo"
             app:layout_constraintStart_toStartOf="@id/ed_email"
-            app:layout_constraintTop_toBottomOf="@id/ed_name"
+            app:layout_constraintTop_toBottomOf="@id/ed_name_last"
             tools:alpha="1"
             tools:layout_editor_absoluteY="381dp" />
 
@@ -194,57 +224,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/label_password"
+            app:layout_constraintBottom_toTopOf="@id/btn_signup"
+            android:layout_marginBottom="20dp"
             tools:alpha="1">
 
             <com.signify.app.presentation.component.PasswordTextField
                 android:id="@+id/ed_password"
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:includeFontPadding="false"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="10dp"
-                android:textSize="12sp"
-                tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/label_confirm_password"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:alpha="0"
-            android:fontFamily="@font/inter_regular"
-            android:text="@string/confirm_password_title"
-            android:textColor="@color/blackTwo"
-            app:layout_constraintStart_toStartOf="@id/ed_confirm_password_wrapper"
-            app:layout_constraintTop_toBottomOf="@id/ed_password_wrapper"
-            tools:alpha="1"
-            tools:layout_editor_absoluteY="381dp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ed_confirm_password_wrapper"
-            android:layout_width="280dp"
-            android:layout_height="40dp"
-            android:alpha="0"
-            android:hint="@string/placeholder_confirm_password"
-            app:boxBackgroundColor="@color/inputColor"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:boxCornerRadiusBottomStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxCornerRadiusTopStart="10dp"
-            app:boxStrokeColor="@android:color/transparent"
-            app:boxStrokeWidth="0dp"
-            app:endIconMode="password_toggle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/label_confirm_password"
-            tools:alpha="1">
-
-            <com.signify.app.presentation.component.PasswordTextField
-                android:id="@+id/ed_confirm_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -269,10 +255,20 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ed_confirm_password_wrapper"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:alpha="1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <include
+        android:id="@+id/loading_view"
+        layout="@layout/placeholder_loading"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/content_layout"
+        app:layout_constraintEnd_toEndOf="@id/content_layout"
+        app:layout_constraintStart_toStartOf="@id/content_layout"
+        app:layout_constraintTop_toTopOf="@id/content_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

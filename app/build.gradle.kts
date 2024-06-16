@@ -60,7 +60,7 @@ dependencies {
     // Retrofit + Moshi + Interceptor
     implementation(libs.converter.moshi)
     implementation(libs.retrofit)
-    implementation(libs.moshi)
+    implementation(libs.moshi.kotlin)
     implementation(libs.logging.interceptor)
 
     // Room
@@ -102,17 +102,16 @@ dependencies {
     testImplementation(libs.koin.test.junit5)
 
     // Mediapipe Library
-    implementation ("com.google.mediapipe:tasks-vision:0.20230731")
+    implementation (libs.tasks.vision)
 
     // CameraX core library
-    val cameraxVersion = "1.3.4"
-    implementation ("androidx.camera:camera-core:$cameraxVersion")
+    implementation (libs.androidx.camera.core)
 
     // CameraX Camera2 extensions
-    implementation ("androidx.camera:camera-camera2:$cameraxVersion")
+    implementation (libs.androidx.camera.camera2)
 
     // CameraX View class
-    implementation ("androidx.camera:camera-view:$cameraxVersion")
+    implementation (libs.androidx.camera.view)
 
     // WindowManager
     implementation ("androidx.window:window:1.1.0-alpha03")

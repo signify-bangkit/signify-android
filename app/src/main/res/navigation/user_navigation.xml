@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.signify.app.presentation.fragment.auth.login.LoginFragment"
+        android:name="com.signify.app.presentation.fragment.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
@@ -35,9 +35,15 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.signify.app.presentation.fragment.auth.register.RegisterFragment"
+        android:name="com.signify.app.presentation.fragment.register.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/user_navigation.xml"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.signify.app.presentation.fragment.home.home.HomeFragment"

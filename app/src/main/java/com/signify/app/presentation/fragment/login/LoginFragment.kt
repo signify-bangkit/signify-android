@@ -1,4 +1,4 @@
-package com.signify.app.presentation.fragment.auth.login
+package com.signify.app.presentation.fragment.login
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.core.app.SharedElementCallback
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.signify.app.R
@@ -44,6 +45,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         sharedElementReturnTransition = ChangeBounds().apply {
             duration = 400
         }
+
     }
 
     override fun doSomething() {

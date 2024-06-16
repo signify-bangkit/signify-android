@@ -20,6 +20,7 @@ class PreferenceManager(context: Context) {
     fun setLoginPref(user: LoginResponse) {
         user.let {
             setStringPreference(TOKEN_KEY, it.token)
+            setStringPreference(NAME_KEY, it.userName)
         }
     }
 
@@ -30,7 +31,6 @@ class PreferenceManager(context: Context) {
     }
 
     val getToken = prefs.getString(TOKEN_KEY, "") ?: ""
-    val name = prefs.getString(NAME_KEY, "") ?: ""
 
     companion object {
         const val PREFS_NAME: String = "auth_pref"

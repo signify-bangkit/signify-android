@@ -43,7 +43,7 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
         initListener()
         initAnimation()
 
-        findNavController().navigate(R.id.action_authFragment_to_homeFragment)
+//        findNavController().navigate(R.id.action_authFragment_to_homeFragment)
     }
 
     private fun initListener() {
