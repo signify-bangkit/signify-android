@@ -9,11 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.signify.app.R
 import com.signify.app.base.BaseFragment
 import com.signify.app.databinding.FragmentAuthBinding
+import com.signify.app.utils.PreferenceManager
+import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 class AuthFragment : BaseFragment<FragmentAuthBinding>() {
 
@@ -24,6 +28,8 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
     ): FragmentAuthBinding {
         return FragmentAuthBinding.inflate(inflater, container, false)
     }
+
+    private val preferenceManager: PreferenceManager by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,11 +45,27 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
 
     }
 
+
     override fun doSomething() {
         initListener()
         initAnimation()
 
-//        findNavController().navigate(R.id.action_authFragment_to_homeFragment)
+        lifecycleScope.launch {
+            if (preferenceManager.getToken.isNotEmpty()) {
+
+                val extras = FragmentNavigatorExtras(
+                    binding.contentLayout to "content_layout_shared",
+                    binding.imageIllustration to "image_illustration_shared",
+                    binding.circleLeft to "circle_left_shared",
+                    binding.circleRight to "circle_right_shared",
+                    binding.titleApp to "title_app",
+                )
+                val direction =
+                    AuthFragmentDirections.actionAuthFragmentToHomeFragment()
+                findNavController().navigate(direction, extras)
+
+            }
+        }
     }
 
     private fun initListener() {
@@ -56,7 +78,8 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
                 binding.titleApp to "title_app",
             )
 
-            val direction = AuthFragmentDirections.actionAuthFragmentToLoginFragment()
+            val direction =
+                AuthFragmentDirections.actionAuthFragmentToLoginFragment()
 
             findNavController().navigate(
                 direction,

@@ -31,6 +31,7 @@ class PreferenceManager(context: Context) {
     }
 
     val getToken = prefs.getString(TOKEN_KEY, "") ?: ""
+    val getName = prefs.getString(NAME_KEY, "") ?: ""
 
     companion object {
         const val PREFS_NAME: String = "auth_pref"

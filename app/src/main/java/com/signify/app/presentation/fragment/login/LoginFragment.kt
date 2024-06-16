@@ -9,12 +9,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import androidx.core.app.SharedElementCallback
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.signify.app.R
 import com.signify.app.base.BaseFragment
+import com.signify.app.data.auth.LoginRequest
+import com.signify.app.data.basemodel.ApiStatus
 import com.signify.app.databinding.FragmentLoginBinding
+import com.signify.app.utils.showToast
+import org.koin.android.ext.android.inject
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     override fun assignBinding(
@@ -24,6 +27,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     ): FragmentLoginBinding {
         return FragmentLoginBinding.inflate(inflater, container, false)
     }
+
+    private val viewModel: LoginViewModel by inject()
 
     private fun syncBarColor() {
         activity?.window?.statusBarColor = Color.TRANSPARENT
@@ -54,6 +59,46 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         syncBarColor()
         initListener()
         initAnimation()
+        initObserver()
+    }
+
+    private fun initObserver() {
+        viewModel.loginResult.observe(viewLifecycleOwner) {
+            when (it) {
+                is ApiStatus.Loading -> {
+                    binding.loadingView.root.visibility = View.VISIBLE
+                }
+
+                is ApiStatus.Success -> {
+                    showToast(requireActivity(), "Welcome! ${it.data.userName}")
+
+                    with(binding) {
+                        val extras = FragmentNavigatorExtras(
+                            contentLayout to "content_layout_shared",
+                            circleLeft to "circle_left_shared",
+                            circleRight to "circle_right_shared",
+                            titleApp to "title_app",
+                        )
+                        findNavController().navigate(
+                            R.id.action_loginFragment_to_homeFragment,
+                            null,
+                            null,
+                            extras
+                        )
+                    }
+
+                }
+
+                is ApiStatus.Error -> {
+                    showToast(requireActivity(), it.errorMessage)
+                    binding.loadingView.root.visibility = View.GONE
+                }
+
+                else -> {
+                    binding.loadingView.root.visibility = View.GONE
+                }
+            }
+        }
     }
 
     private fun initListener() {
@@ -76,28 +121,25 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             }
 
             btnLogin.setOnClickListener {
+                binding.loadingView.root.visibility = View.VISIBLE
+                val email = binding.edEmail.text?.trim().toString()
+                val password = binding.edPassword.text?.trim().toString()
 
-                val extras = FragmentNavigatorExtras(
-                    contentLayout to "content_layout_shared",
-                    circleLeft to "circle_left_shared",
-                    circleRight to "circle_right_shared",
-                    titleApp to "title_app",
+                val request = LoginRequest(
+                    email,
+                    password,
                 )
-                findNavController().navigate(
-                    R.id.action_loginFragment_to_homeFragment,
-                    null,
-                    null,
-                    extras
-                )
+
+                if (email.isEmpty() || password.isEmpty()) {
+                    showToast(
+                        requireActivity(),
+                        getString(R.string.email_or_password_empty)
+                    )
+                    binding.loadingView.root.visibility = View.GONE
+                } else {
+                    viewModel.login(request)
+                }
             }
-
-            // focus listener, weird this bug happened sometimes
-            //edPassword.apply {
-            //    setOnFocusChangeListener { _, hasFocus ->
-            //        edPasswordWrapper.isHintEnabled =
-            //            !(hasFocus || edPassword.text!!.isNotEmpty())
-            //    }
-            //}
         }
     }
 
