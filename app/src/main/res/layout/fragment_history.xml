@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".presentation.fragment.history.history.HistoryFragment">
 
@@ -29,6 +30,17 @@
             android:transitionName="title_app" />
     </com.google.android.material.appbar.MaterialToolbar>
 
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/loading_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:indeterminate="true"
+        app:indicatorColor="@color/blueTwo"
+        app:indicatorSize="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_bar" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/content_layout"
         android:layout_width="0dp"
@@ -36,6 +48,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/bg_rounded_border"
+        android:elevation="4dp"
         android:paddingHorizontal="10dp"
         android:paddingVertical="5dp"
         android:transitionName="content_layout_shared"
@@ -83,6 +96,7 @@
         android:layout_marginBottom="30dp"
         android:background="@drawable/bg_circle_button"
         android:backgroundTint="@color/blueOne"
+        android:elevation="5dp"
         app:layout_constraintBottom_toTopOf="@id/content_layout"
         app:layout_constraintEnd_toEndOf="@id/content_layout"
         app:layout_constraintStart_toStartOf="@id/content_layout"
@@ -101,4 +115,15 @@
             app:tint="@color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_history"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_bar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

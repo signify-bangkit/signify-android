@@ -68,29 +68,17 @@
                 android:layout_margin="20dp"
                 android:text="@string/placeholder_name"
                 android:textAppearance="?attr/textAppearanceHeadline5"
-                app:layout_constraintEnd_toStartOf="@id/image_loc"
                 app:layout_constraintStart_toStartOf="@id/image_photo"
                 app:layout_constraintTop_toBottomOf="@+id/image_photo" />
-
-            <ImageView
-                android:id="@id/image_loc"
-                android:layout_width="20dp"
-                android:layout_height="0dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:src="@drawable/splash"
-                app:layout_constraintBottom_toBottomOf="@id/title_name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/title_name"
-                app:layout_constraintTop_toTopOf="@id/title_name" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/divider"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                app:layout_constraintEnd_toEndOf="@+id/image_loc"
-                app:layout_constraintStart_toStartOf="@+id/title_name"
+                android:layout_marginHorizontal="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title_name" />
 
             <TextView

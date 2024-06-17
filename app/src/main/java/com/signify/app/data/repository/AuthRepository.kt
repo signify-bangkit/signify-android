@@ -1,6 +1,10 @@
-package com.signify.app.data.auth
+package com.signify.app.data.repository
 
-import com.signify.app.data.basemodel.ApiStatus
+import com.signify.app.data.model.auth.LoginRequest
+import com.signify.app.data.model.auth.LoginResponse
+import com.signify.app.data.model.auth.RegisterRequest
+import com.signify.app.data.model.auth.RegisterResponse
+import com.signify.app.data.model.base.ApiStatus
 import com.signify.app.data.service.SignifyService
 import com.signify.app.utils.PreferenceManager
 import com.signify.app.utils.koinModules

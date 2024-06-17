@@ -1,4 +1,4 @@
-package com.signify.app.data.auth
+package com.signify.app.data.model.auth
 
 import retrofit2.http.Field
 

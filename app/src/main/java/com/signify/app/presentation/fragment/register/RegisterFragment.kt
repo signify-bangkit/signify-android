@@ -10,8 +10,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.signify.app.R
 import com.signify.app.base.BaseFragment
-import com.signify.app.data.auth.RegisterRequest
-import com.signify.app.data.basemodel.ApiStatus
+import com.signify.app.data.model.auth.RegisterRequest
+import com.signify.app.data.model.base.ApiStatus
 import com.signify.app.databinding.FragmentRegisterBinding
 import com.signify.app.utils.showToast
 import org.koin.android.ext.android.inject

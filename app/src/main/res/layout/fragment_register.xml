@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".presentation.fragment.login.LoginFragment">
 
     <TextView
@@ -211,6 +212,7 @@
             android:id="@+id/ed_password_wrapper"
             android:layout_width="280dp"
             android:layout_height="40dp"
+            android:layout_marginBottom="20dp"
             android:alpha="0"
             android:hint="@string/placeholder_password"
             app:boxBackgroundColor="@color/inputColor"
@@ -221,11 +223,10 @@
             app:boxStrokeColor="@android:color/transparent"
             app:boxStrokeWidth="0dp"
             app:endIconMode="password_toggle"
+            app:layout_constraintBottom_toTopOf="@id/btn_signup"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/label_password"
-            app:layout_constraintBottom_toTopOf="@id/btn_signup"
-            android:layout_marginBottom="20dp"
             tools:alpha="1">
 
             <com.signify.app.presentation.component.PasswordTextField
@@ -253,9 +254,9 @@
             android:fontFamily="@font/inter_bold"
             android:text="@string/sign_up_button_text"
             android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             tools:alpha="1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

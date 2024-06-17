@@ -14,7 +14,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 val networkModule = module {
-
     single { PreferenceManager(get()) }
     single {
         OkHttpClient.Builder()
@@ -39,12 +38,12 @@ val networkModule = module {
     single {
         get<Retrofit>().create(SignifyService::class.java)
     }
-
 }
 
-private fun headerInterceptor(preferenceManager: PreferenceManager): Interceptor {
+private fun headerInterceptor(
+    preferenceManager: PreferenceManager,
+): Interceptor {
     val headers = HashMap<String, String>()
     headers["Content-Type"] = "application/json"
-
     return HeaderInterceptor(headers, preferenceManager)
 }

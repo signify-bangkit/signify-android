@@ -7,13 +7,13 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
-import com.signify.app.data.article.Article
+import com.signify.app.data.model.article.ArticleResponse
 import com.signify.app.databinding.ListArticleBinding
 import com.signify.app.presentation.fragment.home.home.HomeFragmentDirections
 
 class NewsAdapter(
     private val context: Context,
-    private val articleList: List<Article>
+    private val articleResponseList: List<ArticleResponse>
 ) :
     RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
@@ -30,23 +30,23 @@ class NewsAdapter(
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        val newsItem = articleList[position]
+        val newsItem = articleResponseList[position]
         holder.bind(newsItem)
     }
 
     override fun getItemCount(): Int {
-        return articleList.size
+        return articleResponseList.size
     }
 
     inner class NewsViewHolder(private val binding: ListArticleBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(articleItem: Article) {
-            binding.tvTitleNews.text = articleItem.title
-            binding.tvDescriptionNews.text = articleItem.description
-            binding.tvDateNews.text = articleItem.date
+        fun bind(articleResponseItem: ArticleResponse) {
+            binding.tvTitleNews.text = articleResponseItem.title
+            binding.tvDescriptionNews.text = articleResponseItem.description
+            binding.tvDateNews.text = articleResponseItem.date
 
-            binding.imagePhoto.load(articleItem.imageUrl) {
+            binding.imagePhoto.load(articleResponseItem.imageUrl) {
                 transformations(RoundedCornersTransformation(25f))
             }
 
@@ -56,7 +56,7 @@ class NewsAdapter(
             binding.root.setOnClickListener {
                 val action =
                     HomeFragmentDirections.actionHomeFragmentToArticleDetailFragment(
-                        articleItem.imageUrl
+                        articleResponseItem.imageUrl
                     )
                 it.findNavController().navigate(action)
             }

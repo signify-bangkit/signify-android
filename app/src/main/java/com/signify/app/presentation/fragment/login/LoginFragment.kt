@@ -13,8 +13,8 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.signify.app.R
 import com.signify.app.base.BaseFragment
-import com.signify.app.data.auth.LoginRequest
-import com.signify.app.data.basemodel.ApiStatus
+import com.signify.app.data.model.auth.LoginRequest
+import com.signify.app.data.model.base.ApiStatus
 import com.signify.app.databinding.FragmentLoginBinding
 import com.signify.app.utils.showToast
 import org.koin.android.ext.android.inject

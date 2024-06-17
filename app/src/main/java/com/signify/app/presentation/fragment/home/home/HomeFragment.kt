@@ -3,7 +3,6 @@ package com.signify.app.presentation.fragment.home.home
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.os.Bundle
-import android.text.Layout.Directions
 import android.transition.ChangeBounds
 import android.view.LayoutInflater
 import android.view.View
@@ -19,10 +18,12 @@ import com.google.android.material.carousel.CarouselSnapHelper
 import com.google.android.material.carousel.HeroCarouselStrategy
 import com.signify.app.R
 import com.signify.app.base.BaseFragment
-import com.signify.app.data.article.Article
+import com.signify.app.data.model.article.ArticleResponse
 import com.signify.app.databinding.FragmentHomeBinding
 import com.signify.app.presentation.adapter.CarouselAdapter
 import com.signify.app.presentation.adapter.NewsAdapter
+import com.signify.app.utils.PreferenceManager
+import org.koin.android.ext.android.inject
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun assignBinding(
@@ -43,6 +44,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private lateinit var carouselRecyclerView: RecyclerView
     private lateinit var newsAdapter: NewsAdapter
+    private val pref: PreferenceManager by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,6 +84,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun initListener() {
         with(binding) {
+            toolbarTitle.text = getString(R.string.greeting_with_name, pref.getName)
             btnAnalyze.setOnClickListener {
                 val extras = FragmentNavigatorExtras(
                     contentLayout to "content_layout_shared",
@@ -163,21 +166,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         binding.recyclerNews.adapter = newsAdapter
     }
 
-    private fun getDummyNews(): MutableList<Article> {
+    private fun getDummyNews(): MutableList<ArticleResponse> {
         return mutableListOf(
-            Article(
+            ArticleResponse(
                 title = "Not",
                 description = "Description 1",
                 date = "Date 1",
                 imageUrl = "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg"
             ),
-            Article(
+            ArticleResponse(
                 title = "Implemented",
                 description = "Description 2",
                 date = "Date 2",
                 imageUrl = "https://i.pinimg.com/564x/06/6f/b2/066fb2bd6a2f623a340239ed25db389d.jpg"
             ),
-            Article(
+            ArticleResponse(
                 title = "Yet",
                 description = "Description 3",
                 date = "Date 3",

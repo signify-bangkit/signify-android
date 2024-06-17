@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.signify.app.data.auth.AuthRepository
-import com.signify.app.data.auth.RegisterRequest
-import com.signify.app.data.auth.RegisterResponse
-import com.signify.app.data.basemodel.ApiStatus
+import com.signify.app.data.repository.AuthRepository
+import com.signify.app.data.model.auth.RegisterRequest
+import com.signify.app.data.model.auth.RegisterResponse
+import com.signify.app.data.model.base.ApiStatus
 import kotlinx.coroutines.launch
 
 class RegisterViewModel(private val repository: AuthRepository) : ViewModel() {

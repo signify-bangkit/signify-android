@@ -186,7 +186,9 @@ class AnalyzeFragment : BaseFragment<FragmentAnalyzeBinding>(),
                     binding.btnSave to "btn_save",
                 )
                 val direction =
-                    AnalyzeFragmentDirections.actionAnalyzeFragmentToOutputFragment()
+                    AnalyzeFragmentDirections.actionAnalyzeFragmentToOutputFragment(
+                        output = appended.toString()
+                    )
                 findNavController().navigate(direction, extras)
             } else {
                 showToast(requireActivity(), "Result's Empty!")

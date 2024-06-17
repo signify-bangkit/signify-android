@@ -37,7 +37,7 @@
         android:id="@+id/registerFragment"
         android:name="com.signify.app.presentation.fragment.register.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" >
+        tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -73,13 +73,24 @@
         tools:layout="@layout/fragment_history">
         <action
             android:id="@+id/action_historyFragment_to_historyDetailFragment"
-            app:destination="@id/historyDetailFragment" />
+            app:destination="@id/historyDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/historyDetailFragment"
         android:name="com.signify.app.presentation.fragment.history.history_detail.HistoryDetailFragment"
         android:label="fragment_history_detail"
-        tools:layout="@layout/fragment_history_detail" />
+        tools:layout="@layout/fragment_history_detail">
+        <argument
+            android:name="date"
+            app:argType="string" />
+        <argument
+            android:name="translatedText"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/analyzeFragment"
         android:name="com.signify.app.presentation.fragment.analyze.analyze.AnalyzeFragment"
@@ -93,7 +104,11 @@
         android:id="@+id/outputFragment"
         android:name="com.signify.app.presentation.fragment.analyze.output.OutputFragment"
         android:label="fragment_output"
-        tools:layout="@layout/fragment_output" />
+        tools:layout="@layout/fragment_output">
+        <argument
+            android:name="output"
+            app:argType="string" />
+    </fragment>
     <action
         android:id="@+id/action_global_analyzeFragment"
         app:destination="@id/analyzeFragment"
@@ -102,7 +117,7 @@
         android:id="@+id/profileFragment"
         android:name="com.signify.app.presentation.fragment.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
