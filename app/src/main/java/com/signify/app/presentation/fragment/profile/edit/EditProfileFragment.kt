@@ -7,9 +7,15 @@ import android.transition.ChangeBounds
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
+import com.signify.app.R
 import com.signify.app.base.BaseFragment
+import com.signify.app.data.model.auth.UpdateProfileRequest
+import com.signify.app.data.model.base.ApiStatus
 import com.signify.app.databinding.FragmentEditProfileBinding
 import com.signify.app.utils.PreferenceManager
+import com.signify.app.utils.showToast
 import org.koin.android.ext.android.inject
 
 class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
@@ -22,6 +28,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
     }
 
     private val pref: PreferenceManager by inject()
+    private val viewModel: EditProfileViewModel by inject()
 
     override fun beforeSomething() {
         super.beforeSomething()
@@ -38,6 +45,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
 
         initAnimation()
         initListener()
+        initObserver()
     }
 
     private fun initListener() {
@@ -48,8 +56,55 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
             edName.setText(pref.getFirstName)
             edNameLast.setText(pref.getLastName)
             emailPlaceholder.text = pref.getEmail
+
+            btnUpdate.setOnClickListener {
+                val profile = UpdateProfileRequest(
+                    edName.text.toString(),
+                    edNameLast.text.toString(),
+                )
+                viewModel.updateProfile(profile)
+            }
         }
     }
+
+    private fun initObserver() {
+        viewModel.editResults.observe(this) {
+            when (it) {
+                is ApiStatus.Loading -> {
+                    binding.loadingView.root.visibility = View.VISIBLE
+                }
+
+                is ApiStatus.Success -> {
+                    showToast(requireActivity(), it.data.msg)
+
+                    with(binding) {
+                        val extras = FragmentNavigatorExtras(
+                            contentLayoutWrapper to "content_layout_wrapper",
+                            itemAvatar to "item_avatar",
+                            itemAvatarLabel to "item_avatar_label",
+                            toolbarTitle to "title_app"
+                        )
+                        findNavController().navigate(
+                            R.id.action_global_profileFragment,
+                            null,
+                            null,
+                            extras
+                        )
+                    }
+                }
+
+                is ApiStatus.Error -> {
+                    showToast(requireActivity(), it.errorMessage)
+                    binding.loadingView.root.visibility = View.GONE
+                }
+
+                else -> {
+                    binding.loadingView.root.visibility = View.GONE
+                }
+            }
+        }
+    }
+
 
     private fun initAnimation() {
 

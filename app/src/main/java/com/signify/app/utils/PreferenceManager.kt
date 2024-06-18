@@ -3,6 +3,7 @@ package com.signify.app.utils
 import android.content.Context
 import android.content.SharedPreferences
 import com.signify.app.data.model.auth.LoginResponse
+import com.signify.app.data.model.auth.UpdateProfileRequest
 
 class PreferenceManager(context: Context) {
     private var prefs: SharedPreferences =
@@ -23,6 +24,13 @@ class PreferenceManager(context: Context) {
             setStringPreference(FIRST_NAME_KEY, it.firstName)
             setStringPreference(LAST_NAME_KEY, it.lastName)
             setStringPreference(EMAIL_KEY, it.email)
+        }
+    }
+
+    fun updateNamePref(profile: UpdateProfileRequest) {
+        profile.let {
+            setStringPreference(FIRST_NAME_KEY, it.firstName)
+            setStringPreference(LAST_NAME_KEY, it.lastName)
         }
     }
 

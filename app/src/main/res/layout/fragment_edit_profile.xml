@@ -203,4 +203,17 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <include
+        android:id="@+id/loading_view"
+        layout="@layout/placeholder_loading"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/content_layout_wrapper"
+        app:layout_constraintEnd_toEndOf="@id/content_layout_wrapper"
+        app:layout_constraintStart_toStartOf="@id/content_layout_wrapper"
+        app:layout_constraintTop_toTopOf="@id/content_layout_wrapper"
+        tools:visibility="visible" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

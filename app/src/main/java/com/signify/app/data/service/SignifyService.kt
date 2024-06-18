@@ -6,6 +6,8 @@ import com.signify.app.data.model.article.ArticleResponse
 import com.signify.app.data.model.auth.LoginRequest
 import com.signify.app.data.model.auth.LoginResponse
 import com.signify.app.data.model.auth.RegisterRequest
+import com.signify.app.data.model.auth.UpdateProfileRequest
+import com.signify.app.data.model.auth.UpdateProfileResponse
 import com.signify.app.data.model.base.ApiResponse
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -13,6 +15,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Query
 
 interface SignifyService {
@@ -26,10 +29,10 @@ interface SignifyService {
         @Body loginRequest: LoginRequest
     ): LoginResponse
 
-//    @POST("api/profile/update")
-//    suspend fun updateProfile(
-//        @Body name: LoginRequest
-//    ): LoginResponse
+    @PUT("api/profile/update")
+    suspend fun updateProfile(
+        @Body profile: UpdateProfileRequest
+    ): UpdateProfileResponse
 
     @POST("api/translation/add-translation")
     suspend fun uploadHistory(

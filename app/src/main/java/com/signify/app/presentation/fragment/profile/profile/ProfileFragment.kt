@@ -39,6 +39,14 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        with(binding) {
+            nameText.text = "${pref.getFirstName} ${pref.getLastName}"
+            emailText.text = pref.getEmail
+        }
+    }
+
     override fun doSomething() {
         super.doSomething()
         initListener()

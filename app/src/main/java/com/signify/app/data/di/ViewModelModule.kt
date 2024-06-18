@@ -6,6 +6,7 @@ import com.signify.app.presentation.fragment.history.history.HistoryViewModel
 import com.signify.app.presentation.fragment.history.history_detail.HistoryDetailViewModel
 import com.signify.app.presentation.fragment.home.home.HomeViewModel
 import com.signify.app.presentation.fragment.login.LoginViewModel
+import com.signify.app.presentation.fragment.profile.edit.EditProfileViewModel
 import com.signify.app.presentation.fragment.profile.profile.ProfileViewModel
 import com.signify.app.presentation.fragment.register.RegisterViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -27,4 +28,5 @@ val viewModelModule = module {
 
     // profile
     viewModel { ProfileViewModel(get()) }
+    viewModel { EditProfileViewModel(get()) }
 }
