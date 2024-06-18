@@ -4,6 +4,7 @@ import com.signify.app.presentation.fragment.analyze.output.OutputViewModel
 import com.signify.app.presentation.fragment.auth.AuthViewModel
 import com.signify.app.presentation.fragment.history.history.HistoryViewModel
 import com.signify.app.presentation.fragment.login.LoginViewModel
+import com.signify.app.presentation.fragment.profile.profile.ProfileViewModel
 import com.signify.app.presentation.fragment.register.RegisterViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -17,4 +18,5 @@ val viewModelModule = module {
     // output / history
     viewModel { OutputViewModel(get()) }
     viewModel { HistoryViewModel(get()) }
+    viewModel { ProfileViewModel(get()) }
 }

@@ -30,9 +30,8 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
 
     private val viewModel: AuthViewModel by inject()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        activity?.window?.statusBarColor = Color.TRANSPARENT
+    private fun syncBarColor() {
+        activity?.window?.statusBarColor = Color.WHITE
         activity?.window?.navigationBarColor =
             context?.getColor(R.color.blackOne)!!
         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
@@ -41,9 +40,12 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
             requireActivity().window,
             requireActivity().window.decorView
         ).isAppearanceLightStatusBars = true
-
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        syncBarColor()
+    }
 
     override fun doSomething() {
         initListener()

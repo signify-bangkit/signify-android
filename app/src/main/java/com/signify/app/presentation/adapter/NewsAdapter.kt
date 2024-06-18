@@ -46,11 +46,10 @@ class NewsAdapter(
             binding.tvDescriptionNews.text = articleResponseItem.description
             binding.tvDateNews.text = articleResponseItem.date
 
-            binding.imagePhoto.load(articleResponseItem.imageUrl) {
-                transformations(RoundedCornersTransformation(25f))
-            }
-
-            binding.imagePhoto.transitionName = "image_shared"
+//            binding.imagePhoto.load(articleResponseItem.imageUrl) {
+//                transformations(RoundedCornersTransformation(25f))
+//            }
+            binding.imageItemLabel.text = articleResponseItem.title.first().toString().uppercase()
 
             // Set click listener
             binding.root.setOnClickListener {

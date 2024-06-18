@@ -84,7 +84,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun initListener() {
         with(binding) {
-            toolbarTitle.text = getString(R.string.greeting_with_name, pref.getName)
+            toolbarTitle.text = getString(R.string.greeting_with_name, pref.getFirstName)
             btnAnalyze.setOnClickListener {
                 val extras = FragmentNavigatorExtras(
                     contentLayout to "content_layout_shared",

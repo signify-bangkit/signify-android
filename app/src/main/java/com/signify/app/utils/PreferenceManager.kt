@@ -20,23 +20,31 @@ class PreferenceManager(context: Context) {
     fun setLoginPref(user: LoginResponse) {
         user.let {
             setStringPreference(TOKEN_KEY, it.token)
-            setStringPreference(NAME_KEY, it.userName)
+            setStringPreference(FIRST_NAME_KEY, it.firstName)
+            setStringPreference(LAST_NAME_KEY, it.lastName)
+            setStringPreference(EMAIL_KEY, it.email)
         }
     }
 
     fun clearAllPreferences() {
         editor.remove(TOKEN_KEY)
-        editor.remove(NAME_KEY)
+        editor.remove(FIRST_NAME_KEY)
+        editor.remove(LAST_NAME_KEY)
+        editor.remove(EMAIL_KEY)
         editor.apply()
     }
 
     val getToken = prefs.getString(TOKEN_KEY, "") ?: ""
-    val getName = prefs.getString(NAME_KEY, "") ?: ""
+    val getFirstName = prefs.getString(FIRST_NAME_KEY, "") ?: ""
+    val getLastName = prefs.getString(LAST_NAME_KEY, "") ?: ""
+    val getEmail = prefs.getString(EMAIL_KEY, "") ?: ""
 
     companion object {
         const val PREFS_NAME: String = "auth_pref"
         const val TOKEN_KEY: String = "auth_token"
-        const val NAME_KEY: String = "auth_name"
+        const val FIRST_NAME_KEY: String = "auth_first_name"
+        const val LAST_NAME_KEY: String = "auth_last_name"
+        const val EMAIL_KEY: String = "auth_email"
     }
 
 }

@@ -103,7 +103,6 @@
             app:layout_constraintTop_toBottomOf="@id/content_one"
             tools:alpha="1" />
 
-
         <TextView
             android:id="@+id/label_name"
             android:layout_width="0dp"

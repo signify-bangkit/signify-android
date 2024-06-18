@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.core.view.WindowCompat
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.signify.app.R
@@ -31,10 +32,15 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     private val viewModel: LoginViewModel by inject()
 
     private fun syncBarColor() {
-        activity?.window?.statusBarColor = Color.TRANSPARENT
+        activity?.window?.statusBarColor = Color.WHITE
         activity?.window?.navigationBarColor =
             context?.getColor(R.color.blackOne)!!
         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+
+        WindowCompat.getInsetsController(
+            requireActivity().window,
+            requireActivity().window.decorView
+        ).isAppearanceLightStatusBars = true
     }
 
     override fun onResume() {
@@ -70,7 +76,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                 }
 
                 is ApiStatus.Success -> {
-                    showToast(requireActivity(), "Welcome! ${it.data.userName}")
+                    showToast(requireActivity(), "Welcome! ${it.data.firstName}")
 
                     with(binding) {
                         val extras = FragmentNavigatorExtras(

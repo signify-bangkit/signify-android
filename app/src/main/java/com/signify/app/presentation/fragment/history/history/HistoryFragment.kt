@@ -106,6 +106,9 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
                     is ApiStatus.Success -> {
                         binding.loadingView.visibility = View.GONE
                         adapter.submitList(it.data.results)
+                        if(it.data.results.isEmpty()) {
+                            binding.emptyText.visibility = View.VISIBLE
+                        }
                         rvHistory.addItemDecoration(BottomMarginDecoration(150))
                     }
 

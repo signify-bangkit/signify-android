@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".presentation.fragment.profile.edit.EditProfileFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/blueOne"
+        app:layout_collapseMode="pin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_circle_button"
+            android:backgroundTint="@color/yellowOne"
+            android:src="@drawable/ic_back"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="Edit Profile"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:transitionName="title_app" />
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <View
+        android:id="@+id/item_avatar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/bg_circle_button"
+        android:backgroundTint="@color/yellowOne"
+        android:elevation="5dp"
+        android:transitionName="item_avatar"
+        app:layout_constraintBottom_toTopOf="@id/content_layout_wrapper"
+        app:layout_constraintEnd_toEndOf="@id/content_layout_wrapper"
+        app:layout_constraintStart_toStartOf="@id/content_layout_wrapper"
+        app:layout_constraintTop_toTopOf="@id/content_layout_wrapper" />
+
+    <TextView
+        android:id="@+id/item_avatar_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="6dp"
+        android:textSize="48sp"
+        android:transitionName="item_avatar_label"
+        app:layout_constraintBottom_toBottomOf="@id/item_avatar"
+        app:layout_constraintEnd_toEndOf="@id/item_avatar"
+        app:layout_constraintStart_toStartOf="@id/item_avatar"
+        app:layout_constraintTop_toTopOf="@id/item_avatar"
+        tools:text="R" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/content_layout_wrapper"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/bg_rounded_border"
+        android:elevation="2dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="30dp"
+        android:transitionName="content_layout_wrapper"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_bar">
+
+        <TextView
+            android:id="@+id/label_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:alpha="0"
+            android:fontFamily="@font/inter_regular"
+            android:text="@string/name_title"
+            android:textColor="@color/blackTwo"
+            app:layout_constraintStart_toStartOf="@id/ed_name"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:alpha="1"
+            tools:layout_editor_absoluteY="381dp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_name"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:alpha="0"
+            android:background="@drawable/bg_custom_input"
+            android:fontFamily="@font/inter_regular"
+            android:hint="@string/placeholder_name"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="10dp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_name"
+            tools:alpha="1" />
+
+        <TextView
+            android:id="@+id/label_name_last"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:alpha="0"
+            android:fontFamily="@font/inter_regular"
+            android:text="Last Name"
+            android:textColor="@color/blackTwo"
+            app:layout_constraintStart_toStartOf="@id/ed_name"
+            app:layout_constraintTop_toBottomOf="@id/ed_name"
+            tools:alpha="1"
+            tools:layout_editor_absoluteY="381dp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_name_last"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:alpha="0"
+            android:background="@drawable/bg_custom_input"
+            android:fontFamily="@font/inter_regular"
+            android:hint="@string/placeholder_name"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="10dp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_name_last"
+            tools:alpha="1" />
+
+        <TextView
+            android:id="@+id/label_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:alpha="0"
+            android:fontFamily="@font/inter_regular"
+            android:text="Email (uneditable)"
+            android:textColor="@color/blackTwo"
+            app:layout_constraintStart_toStartOf="@id/ed_email"
+            app:layout_constraintTop_toBottomOf="@id/ed_name_last"
+            tools:alpha="1"
+            tools:layout_editor_absoluteY="381dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ed_email"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:alpha="0"
+            android:background="@drawable/bg_custom_input"
+            android:fontFamily="@font/inter_regular"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="10dp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_email"
+            tools:alpha="1">
+
+            <TextView
+                android:id="@+id/email_placeholder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blackThree"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                tools:text="your@email.com" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/btn_update"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:alpha="0"
+            android:backgroundTint="@color/blueOne"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/update_profile"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ed_email"
+            tools:alpha="1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

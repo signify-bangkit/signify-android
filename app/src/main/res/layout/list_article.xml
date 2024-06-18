@@ -2,12 +2,12 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardElevation="0dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
-    app:strokeColor="@color/white"
-    android:backgroundTint="@color/inputColor">
+    android:backgroundTint="@color/inputColor"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_title"
@@ -15,11 +15,13 @@
         android:layout_height="wrap_content"
         android:padding="8dp">
 
-        <ImageView
-            android:id="@+id/image_photo"
+        <View
+            android:id="@+id/image_item"
             android:layout_width="100dp"
-            android:layout_height="0dp"
+            android:layout_height="100dp"
             android:adjustViewBounds="true"
+            android:background="@drawable/bg_rounded_border"
+            android:backgroundTint="@color/blueOne"
             android:maxHeight="250dp"
             android:padding="5dp"
             android:scaleType="centerCrop"
@@ -30,16 +32,35 @@
             tools:src="@tools:sample/backgrounds/scenic" />
 
         <TextView
+            android:id="@+id/image_item_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:background="@drawable/bg_rounded_border"
+            android:backgroundTint="@color/blueOne"
+            android:maxHeight="250dp"
+            android:padding="5dp"
+            android:scaleType="centerCrop"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            app:layout_constraintBottom_toBottomOf="@id/image_item"
+            app:layout_constraintEnd_toEndOf="@id/image_item"
+            app:layout_constraintStart_toStartOf="@id/image_item"
+            app:layout_constraintTop_toTopOf="@id/image_item"
+            tools:src="@tools:sample/backgrounds/scenic"
+            tools:text="R" />
+
+        <TextView
             android:id="@+id/tv_title_news"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
+            android:layout_marginLeft="12dp"
             android:ellipsize="end"
             android:fontFamily="@font/inter_bold"
             android:maxLines="1"
             android:textAppearance="?attr/textAppearanceBodyMedium"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/image_photo"
+            app:layout_constraintStart_toEndOf="@id/image_item"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@tools:sample/lorem/random" />
 
