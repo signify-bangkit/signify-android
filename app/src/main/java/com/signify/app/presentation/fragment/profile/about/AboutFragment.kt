@@ -49,4 +49,18 @@ class AboutFragment : BaseFragment<FragmentAboutBinding>() {
         }
     }
 
+    override fun doSomething() {
+        super.doSomething()
+
+        initListener()
+    }
+
+    private fun initListener() {
+        with(binding) {
+            btnBack.setOnClickListener {
+                activity?.onBackPressedDispatcher?.onBackPressed()
+            }
+        }
+    }
+
 }

@@ -25,4 +25,18 @@ class TermsConditionFragment : BaseFragment<FragmentTermsConditionBinding>() {
             duration = 400
         }
     }
+
+    override fun doSomething() {
+        super.doSomething()
+
+        initListener()
+    }
+
+    private fun initListener() {
+        with(binding) {
+            btnBack.setOnClickListener {
+                activity?.onBackPressedDispatcher?.onBackPressed()
+            }
+        }
+    }
 }

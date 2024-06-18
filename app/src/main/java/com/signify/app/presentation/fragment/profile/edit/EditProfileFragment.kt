@@ -64,6 +64,10 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
                 )
                 viewModel.updateProfile(profile)
             }
+
+            btnBack.setOnClickListener {
+                activity?.onBackPressedDispatcher?.onBackPressed()
+            }
         }
     }
 

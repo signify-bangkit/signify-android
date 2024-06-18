@@ -41,6 +41,10 @@ class ConvertFragment : BaseFragment<FragmentConvertBinding>() {
                 contentLayout.visibility = View.VISIBLE
                 loadDrawable(edResults.text.toString().trim(), convertedIv)
             }
+
+            btnBack.setOnClickListener {
+                activity?.onBackPressedDispatcher?.onBackPressed()
+            }
         }
     }
 
