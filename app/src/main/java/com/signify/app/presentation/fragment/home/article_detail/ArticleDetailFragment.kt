@@ -3,6 +3,7 @@ package com.signify.app.presentation.fragment.home.article_detail
 import android.os.Bundle
 import android.transition.ChangeBounds
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import coil.load
 import coil.transform.RoundedCornersTransformation
@@ -32,15 +33,28 @@ class ArticleDetailFragment : BaseFragment<FragmentArticleDetailBinding>() {
 
     override fun doSomething() {
         super.doSomething()
-        val args = ArticleDetailFragmentArgs.fromBundle(arguments as Bundle)
-        binding.imagePhoto.load(args.imageUrl) {
-            transformations(RoundedCornersTransformation(25f))
-        }
 
         initListener()
     }
 
     private fun initListener() {
+
+        val args = ArticleDetailFragmentArgs.fromBundle(arguments as Bundle)
+
+        binding.itemAvatarLabel.text = args.title.first().uppercase()
+        binding.titleName.text = args.title
+        binding.dateText.text = args.date
+        binding.descriptionText.text = args.description
+
+        if (args.imageUrl.isNotEmpty()) {
+            binding.imagePhoto.load(args.imageUrl) {
+                transformations(RoundedCornersTransformation(25f))
+            }
+            binding.itemAvatarLabel.visibility = View.GONE
+            binding.itemAvatar.visibility = View.GONE
+        }
+
+
         binding.btnBack.setOnClickListener {
             activity?.onBackPressedDispatcher?.onBackPressed()
         }

@@ -65,6 +65,12 @@
         <argument
             android:name="imageUrl"
             app:argType="string" />
+        <argument android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument android:name="date" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"

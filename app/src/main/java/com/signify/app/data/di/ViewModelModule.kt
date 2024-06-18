@@ -3,6 +3,7 @@ package com.signify.app.data.di
 import com.signify.app.presentation.fragment.analyze.output.OutputViewModel
 import com.signify.app.presentation.fragment.auth.AuthViewModel
 import com.signify.app.presentation.fragment.history.history.HistoryViewModel
+import com.signify.app.presentation.fragment.home.home.HomeViewModel
 import com.signify.app.presentation.fragment.login.LoginViewModel
 import com.signify.app.presentation.fragment.profile.profile.ProfileViewModel
 import com.signify.app.presentation.fragment.register.RegisterViewModel
@@ -15,8 +16,13 @@ val viewModelModule = module {
     viewModel { RegisterViewModel(get()) }
     viewModel { LoginViewModel(get()) }
 
+    // article
+    viewModel { HomeViewModel(get()) }
+
     // output / history
     viewModel { OutputViewModel(get()) }
     viewModel { HistoryViewModel(get()) }
+
+    // profile
     viewModel { ProfileViewModel(get()) }
 }

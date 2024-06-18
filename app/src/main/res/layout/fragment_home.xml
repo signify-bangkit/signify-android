@@ -40,7 +40,7 @@
                         android:layout_marginTop="85dp"
                         android:fontFamily="@font/inter_semi"
                         android:paddingBottom="10dp"
-                        android:text="Today's SL Article"
+                        android:text="Introduction"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -94,7 +94,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
                     android:fontFamily="@font/inter_semi"
-                    android:text="More articles"
+                    android:text="Articles"
                     android:textSize="16sp" />
             </com.google.android.material.appbar.MaterialToolbar>
 
@@ -137,12 +137,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/content_layout"
-        android:elevation="4dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/bg_rounded_border"
+        android:elevation="4dp"
         android:paddingHorizontal="10dp"
         android:paddingVertical="5dp"
         android:transitionName="content_layout_shared"
@@ -184,13 +184,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/content_layout_button"
-        android:elevation="5dp"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/bg_circle_button"
         android:backgroundTint="@color/blueOne"
+        android:elevation="5dp"
         app:layout_constraintBottom_toTopOf="@id/content_layout"
         app:layout_constraintEnd_toEndOf="@id/content_layout"
         app:layout_constraintStart_toStartOf="@id/content_layout"
@@ -207,6 +207,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/white" />
+
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/loading_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            app:indicatorColor="@color/blueOne"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

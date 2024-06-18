@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.fragment.home.article_detail.ArticleDetailFragment"
-    >
+    android:background="@color/white"
+    tools:context=".presentation.fragment.home.article_detail.ArticleDetailFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/top_bar"
@@ -47,50 +47,92 @@
             android:id="@+id/main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="20dp"
             tools:context=".DetailActivity">
 
             <ImageView
                 android:id="@+id/image_photo"
                 android:layout_width="fill_parent"
                 android:layout_height="250dp"
-                android:layout_margin="20dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 android:transitionName="image_shared"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/image_photo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/item_avatar"
+                android:layout_width="fill_parent"
+                android:layout_height="250dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/bg_rounded_border"
+                android:backgroundTint="@color/blueOne"
+                android:elevation="5dp"
+                android:scaleType="centerCrop"
+                android:transitionName="image_shared"
+                app:layout_constraintEnd_toEndOf="@id/image_photo"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/item_avatar_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="6dp"
+                android:textSize="48sp"
+                android:transitionName="item_avatar_label"
+                android:textColor="@color/white"
+                android:fontFamily="@font/inter_bold"
+                app:layout_constraintBottom_toBottomOf="@id/item_avatar"
+                app:layout_constraintEnd_toEndOf="@id/item_avatar"
+                app:layout_constraintStart_toStartOf="@id/item_avatar"
+                app:layout_constraintTop_toTopOf="@id/item_avatar"
+                tools:text="R" />
+
+            <TextView
                 android:id="@+id/title_name"
                 android:layout_width="0dp"
+                android:layout_marginTop="20dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="@string/placeholder_name"
+                android:fontFamily="@font/inter_bold"
+                android:text="Article Title"
                 android:textAppearance="?attr/textAppearanceHeadline5"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/image_photo"
                 app:layout_constraintTop_toBottomOf="@+id/image_photo" />
+
 
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/divider"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginHorizontal="30dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginVertical="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title_name" />
 
             <TextView
-                android:id="@+id/second_text"
+                android:id="@+id/date_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="description"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:fontFamily="@font/inter_semi"
+                android:text="Date"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/divider"
                 app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+            <TextView
+                android:id="@+id/description_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/inter_regular"
+                android:text="Description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/divider"
+                app:layout_constraintTop_toBottomOf="@+id/date_text" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

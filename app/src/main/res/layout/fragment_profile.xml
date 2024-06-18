@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_layout"
-    android:transitionName="main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:transitionName="main_layout"
     tools:context=".presentation.fragment.profile.profile.ProfileFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:fontFamily="@font/inter_bold"
-            android:text="Profile"
+            android:text="My Profile"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:transitionName="title_app" />
@@ -36,7 +36,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/bg_circle_button"
-        android:backgroundTint="@color/yellowOne"
+        android:backgroundTint="@color/blueOne"
         android:elevation="5dp"
         android:transitionName="item_avatar"
         app:layout_constraintBottom_toTopOf="@id/content_layout_wrapper"
@@ -51,6 +51,8 @@
         android:elevation="6dp"
         android:textSize="48sp"
         android:transitionName="item_avatar_label"
+        android:fontFamily="@font/inter_bold"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/item_avatar"
         app:layout_constraintEnd_toEndOf="@id/item_avatar"
         app:layout_constraintStart_toStartOf="@id/item_avatar"
@@ -140,10 +142,11 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageButton
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/transparent"
+                    android:padding="10dp"
                     android:src="@drawable/ic_forward"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -185,10 +188,11 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageButton
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/transparent"
+                    android:padding="10dp"
                     android:src="@drawable/ic_forward"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -278,10 +282,11 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageButton
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/transparent"
+                    android:padding="10dp"
                     android:src="@drawable/ic_forward"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

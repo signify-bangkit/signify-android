@@ -6,49 +6,32 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
-import com.signify.app.R
 import com.signify.app.data.model.article.Article
 import com.signify.app.data.model.article.ArticleResponseItem
-import com.signify.app.databinding.ListCarouselBinding
+import com.signify.app.databinding.ListArticleBinding
 import com.signify.app.presentation.fragment.home.home.HomeFragmentDirections
+import com.signify.app.utils.toFormattedDate
 
-class CarouselAdapter :
-    ListAdapter<Article, CarouselAdapter.CarouselViewHolder>(
+class ArticleAdapter :
+    ListAdapter<ArticleResponseItem, ArticleAdapter.ArticleViewHolder>(
         DIFF_CALLBACK
     ) {
 
-    companion object {
-        val DIFF_CALLBACK =
-            object : DiffUtil.ItemCallback<Article>() {
-                override fun areItemsTheSame(
-                    oldItem: Article, newItem: Article
-                ): Boolean {
-                    return oldItem == newItem
-                }
-
-                override fun areContentsTheSame(
-                    oldItem: Article, newItem: Article
-                ): Boolean {
-                    return oldItem == newItem
-                }
-            }
-
-    }
-
-    inner class CarouselViewHolder(private val binding: ListCarouselBinding) :
+    class ArticleViewHolder(val binding: ListArticleBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(item: Article) {
+        fun bind(item: ArticleResponseItem) {
             with(binding) {
+                val seconds = item.createdAt.seconds.toLong()
 
-                imageIv.load(item.imageUrl)
-                titleTv.text = item.title
+                imageItemLabel.text = item.title.first().uppercase()
+                tvTitleNews.text = item.title
+                tvDescriptionNews.text = item.content
+                tvDateNews.text = seconds.toFormattedDate()
 
                 val item = Article(
                     title = item.title,
                     content = item.content,
-                    date = item.date,
+                    date = item.createdAt.seconds.toLong().toFormattedDate(),
                     imageUrl = item.imageUrl ?: "",
                 )
 
@@ -59,7 +42,7 @@ class CarouselAdapter :
                             item.imageUrl!!,
                             item.title,
                             item.content,
-                            item.date.toString(),
+                            item.date!!,
                         )
                     it.findNavController().navigate(action)
                 }
@@ -67,18 +50,35 @@ class CarouselAdapter :
         }
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup, viewType: Int
-    ): CarouselViewHolder {
-        val binding = ListCarouselBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false
-        )
-        return CarouselViewHolder(binding)
+    companion object {
+        val DIFF_CALLBACK =
+            object : DiffUtil.ItemCallback<ArticleResponseItem>() {
+                override fun areItemsTheSame(
+                    oldItem: ArticleResponseItem, newItem: ArticleResponseItem
+                ): Boolean {
+                    return oldItem == newItem
+                }
+
+                override fun areContentsTheSame(
+                    oldItem: ArticleResponseItem, newItem: ArticleResponseItem
+                ): Boolean {
+                    return oldItem == newItem
+                }
+            }
+
     }
 
-    override fun onBindViewHolder(holder: CarouselViewHolder, position: Int) {
+    override fun onCreateViewHolder(
+        parent: ViewGroup, viewType: Int
+    ): ArticleViewHolder {
+        val itemArticle = ListArticleBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        )
+        return ArticleViewHolder(itemArticle)
+    }
+
+    override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val item = getItem(position)
         if (item != null) holder.bind(item)
     }
-
 }

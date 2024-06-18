@@ -38,6 +38,7 @@
             android:adjustViewBounds="true"
             android:background="@drawable/bg_rounded_border"
             android:backgroundTint="@color/blueOne"
+            android:fontFamily="@font/inter_bold"
             android:maxHeight="250dp"
             android:padding="5dp"
             android:scaleType="centerCrop"

@@ -2,6 +2,7 @@ package com.signify.app.data.service
 
 import com.signify.app.data.model.History.HistoryRequest
 import com.signify.app.data.model.History.HistoryResponse
+import com.signify.app.data.model.article.ArticleResponse
 import com.signify.app.data.model.auth.LoginRequest
 import com.signify.app.data.model.auth.LoginResponse
 import com.signify.app.data.model.auth.RegisterRequest
@@ -35,6 +36,6 @@ interface SignifyService {
     @GET("api/history")
     suspend fun getHistories(): HistoryResponse
 
-//    @GET("api/article")
-//    suspend fun getArticles(): ArticleResponse
+    @GET("api/articles")
+    suspend fun getArticles(): ArticleResponse
 }
