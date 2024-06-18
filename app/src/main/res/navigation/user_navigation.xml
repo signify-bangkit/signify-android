@@ -56,6 +56,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_convertFragment"
+            app:destination="@id/convertFragment" />
     </fragment>
     <fragment
         android:id="@+id/articleDetailFragment"
@@ -172,4 +175,9 @@
         app:destination="@id/loginFragment"
         app:popUpTo="@id/user_navigation.xml"
         app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/convertFragment"
+        android:name="com.signify.app.presentation.fragment.convert.ConvertFragment"
+        android:label="fragment_convert"
+        tools:layout="@layout/fragment_convert" />
 </navigation>

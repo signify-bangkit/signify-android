@@ -26,7 +26,7 @@ val dummyData: List<Article> = listOf(
         title = "A Brief Introduction to Sign Language",
         content = "Sign language is a visual means of communicating using gestures, facial expressions, and body language. It is used predominantly by Deaf and hard of hearing individuals to communicate effectively. This article explores the history, types, and benefits of sign language, as well as its importance in fostering inclusivity and breaking down communication barriers.",
         date = "2023-06-18",
-        imageUrl = "https://logos-world.net/wp-content/uploads/2023/08/ASL-Alphabet-500x281.png"
+        imageUrl = "https://s3-alpha-sig.figma.com/img/25b7/3da7/4e344d3da334bf81c655014f3ff16970?Expires=1719792000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=CR0TMZzVLegW6xaVZODi-LjaciznaYhvghJuEFrO8VCh32C3swxNCMT6KhkTnS-bmZ5xi7IzF82jouSzbyNVcXYrR2w7vAwUuVlw2xJVSx1~bv~IKt5clFvc5~Y2YsqNxzWrZHqhDHILvvtMSf~D~6uXpXzaxSPdv81dSWd~0Hso6Qc0OLjYJaJaqhsMu9IC5l8TL2FuMBd6XIdE2n-8Au0IKkD2gy7x2YExqm3Z1AHlssKaOVC5c3JKBPN5hKD47-h4Iz0YrW3PrAcmNHB2Qi7BUMKRshU9Rh9lpnIvMWXrOWBQCm6W5fT2mVfC~7C2AgrJWXwLPeOVwh551XllQQ__"
     ),
     Article(
         title = "How to use Signify",

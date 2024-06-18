@@ -123,11 +123,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         with(binding) {
             toolbarTitle.text =
                 getString(R.string.greeting_with_name, pref.getFirstName)
+
+            val extras = FragmentNavigatorExtras(
+                contentLayout to "content_layout_shared",
+                toolbarTitle to "title_app",
+            )
+
             btnAnalyze.setOnClickListener {
-                val extras = FragmentNavigatorExtras(
-                    contentLayout to "content_layout_shared",
-                    toolbarTitle to "title_app",
-                )
                 findNavController().navigate(
                     R.id.action_global_analyzeFragment,
                     null,
@@ -136,10 +138,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 )
             }
             btnHistory.setOnClickListener {
-                val extras = FragmentNavigatorExtras(
-                    contentLayout to "content_layout_shared",
-                    toolbarTitle to "title_app",
-                )
                 findNavController().navigate(
                     R.id.action_global_historyFragment,
                     null,
@@ -148,14 +146,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 )
             }
             btnPerson.setOnClickListener {
-                val extras = FragmentNavigatorExtras(
-                    contentLayout to "content_layout_shared",
-                    toolbarTitle to "title_app",
-                )
                 findNavController().navigate(
                     R.id.action_global_profileFragment,
                     null,
                     null,
+                    extras
+                )
+            }
+            btnConvert.setOnClickListener {
+                findNavController().navigate(
+                    HomeFragmentDirections.actionHomeFragmentToConvertFragment(),
                     extras
                 )
             }
