@@ -143,6 +143,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter_bold"
             android:text=";-;"
+            android:textColor="@color/blackTwo"
             android:textSize="60sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -155,6 +156,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/inter_medium"
             android:text="Saved history is empty"
+            android:textColor="@color/blackTwo"
             app:layout_constraintEnd_toEndOf="@id/empty_tv"
             app:layout_constraintStart_toStartOf="@id/empty_tv"
             app:layout_constraintTop_toBottomOf="@id/empty_tv" />

@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.signify.app.data.model.History.HistoryRequest
+import com.signify.app.data.model.history.HistoryRequest
 import com.signify.app.data.model.base.ApiResponse
 import com.signify.app.data.model.base.ApiStatus
 import com.signify.app.data.repository.HistoryRepository

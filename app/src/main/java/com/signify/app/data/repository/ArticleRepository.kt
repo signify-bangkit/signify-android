@@ -1,6 +1,5 @@
 package com.signify.app.data.repository
 
-import com.signify.app.data.model.History.HistoryResponse
 import com.signify.app.data.model.article.ArticleResponse
 import com.signify.app.data.model.base.ApiStatus
 import com.signify.app.data.service.SignifyService

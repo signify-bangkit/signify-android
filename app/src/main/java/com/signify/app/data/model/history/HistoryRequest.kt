@@ -1,4 +1,4 @@
-package com.signify.app.data.model.History
+package com.signify.app.data.model.history
 
 import retrofit2.http.Field
 

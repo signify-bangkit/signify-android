@@ -3,7 +3,7 @@ package com.signify.app.data.repository
 import com.signify.app.data.model.auth.LoginRequest
 import com.signify.app.data.model.auth.LoginResponse
 import com.signify.app.data.model.auth.RegisterRequest
-import com.signify.app.data.model.auth.RegisterResponse
+import com.signify.app.data.model.base.ApiResponse
 import com.signify.app.data.model.base.ApiStatus
 import com.signify.app.data.service.SignifyService
 import com.signify.app.utils.PreferenceManager
@@ -15,7 +15,7 @@ import org.koin.core.context.unloadKoinModules
 
 interface AuthRepository {
     fun login(user: LoginRequest): Flow<ApiStatus<LoginResponse>>
-    fun register(user: RegisterRequest): Flow<ApiStatus<RegisterResponse>>
+    fun register(user: RegisterRequest): Flow<ApiStatus<ApiResponse>>
     fun logout(): Boolean
 }
 
@@ -38,12 +38,16 @@ class AuthRepositoryImpl(
             }
         }
 
-    override fun register(user: RegisterRequest): Flow<ApiStatus<RegisterResponse>> =
+    override fun register(user: RegisterRequest): Flow<ApiStatus<ApiResponse>> =
         flow {
             try {
                 emit(ApiStatus.Loading)
                 val response = api.register(user)
-                emit(ApiStatus.Success(response))
+                if (!response.error) {
+                    emit(ApiStatus.Success(response))
+                }else{
+                    emit(ApiStatus.Error(response.msg))
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
                 emit(ApiStatus.Error(e.message.toString()))

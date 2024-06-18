@@ -64,6 +64,19 @@
         app:layout_constraintTop_toBottomOf="@id/author_text"
         tools:text="@tools:sample/lorem/random" />
 
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/loading_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:indeterminate="true"
+        app:indicatorColor="@color/blueTwo"
+        app:indicatorSize="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_bar" />
+
     <Button
         android:id="@+id/btn_delete"
         android:layout_width="0dp"

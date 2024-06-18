@@ -3,16 +3,13 @@ package com.signify.app.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.signify.app.R
-import com.signify.app.data.model.History.History
+import com.signify.app.data.model.history.History
 import com.signify.app.databinding.ListHistoryBinding
-import com.signify.app.presentation.fragment.history.history.HistoryFragment
 import com.signify.app.presentation.fragment.history.history.HistoryFragmentDirections
-import com.signify.app.presentation.fragment.home.home.HomeFragmentDirections
 import com.signify.app.utils.toFormattedDate
 
 class HistoryAdapter :

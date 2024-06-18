@@ -9,7 +9,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.signify.app.R
 import com.signify.app.base.BaseFragment
-import com.signify.app.data.model.History.HistoryRequest
+import com.signify.app.data.model.history.HistoryRequest
 import com.signify.app.data.model.base.ApiStatus
 import com.signify.app.databinding.FragmentOutputBinding
 import com.signify.app.utils.showToast
@@ -52,7 +52,7 @@ class OutputFragment : BaseFragment<FragmentOutputBinding>() {
 
         binding.btnSave.setOnClickListener {
             binding.loadingView.root.visibility = View.VISIBLE
-            val request = HistoryRequest(args.output)
+            val request = HistoryRequest(binding.edResults.text.toString())
             viewModel.uploadText(request)
         }
     }
