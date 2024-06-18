@@ -30,5 +30,8 @@ data class History(
     val translatedText: String,
 
     @Json(name = "email")
-    val email: String
+    val email: String,
+
+    @Json(name = "id")
+    val id: String
 )

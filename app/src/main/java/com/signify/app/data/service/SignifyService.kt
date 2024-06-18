@@ -10,8 +10,10 @@ import com.signify.app.data.model.base.ApiResponse
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface SignifyService {
     @POST("api/auth/register")
@@ -39,8 +41,8 @@ interface SignifyService {
 
     @DELETE("api/history/delete")
     suspend fun deleteHistory(
-        @Field("historyId") historyId: String
-    ): HistoryResponse
+        @Query("historyId") historyId: String
+    ): ApiResponse
 
     @GET("api/articles")
     suspend fun getArticles(): ArticleResponse

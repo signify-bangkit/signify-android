@@ -31,7 +31,8 @@ class HistoryAdapter :
                     val action =
                         HistoryFragmentDirections.actionHistoryFragmentToHistoryDetailFragment(
                             seconds.toFormattedDate(),
-                            item.translatedText
+                            item.translatedText,
+                            item.id
                         )
                     it.findNavController().navigate(action)
                 }
