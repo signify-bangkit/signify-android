@@ -306,7 +306,7 @@ class GestureRecognizerHelper(
 
     companion object {
         val TAG = "GestureRecognizerHelper ${this.hashCode()}"
-        private const val RECOGNIZER_TASK = "gesture_recognizer.task"
+        private const val RECOGNIZER_TASK = "sibi_new.task"
 
         const val DELEGATE_CPU = 0
         const val DELEGATE_GPU = 1
