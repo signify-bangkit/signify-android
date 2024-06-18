@@ -65,9 +65,9 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
                     password,
                 )
 
-                if (email.isEmpty() || password.isEmpty()) {
+                if ( name.isEmpty() || nameLast.isEmpty() || email.isEmpty() || password.isEmpty()) {
                     showToast(requireActivity(),
-                        getString(R.string.email_or_password_empty))
+                        getString(R.string.fields_empty))
                     binding.loadingView.root.visibility = View.GONE
                 } else {
                     viewModel.register(request)

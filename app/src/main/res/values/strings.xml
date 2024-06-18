@@ -30,6 +30,7 @@
     <string name="add_space">Add Space</string>
     <string name="tv_gallery_placeholder">Click + to add an image or video to begin running the...</string>
     <string name="switch_camera">Switch Camera</string>
+    <string name="fields_empty">Some fields are empty!</string>
     <string name="email_or_password_empty">Email or password empty!</string>
     <string name="history_author_date">You - %s</string>
     <string name="update_profile">Update Profile</string>

@@ -7,5 +7,8 @@ import com.squareup.moshi.Json
 data class RegisterResponse(
 
 	@Json(name="msg")
-	val msg: String
+	val msg: String,
+
+	@Json(name="error")
+	val error: Boolean
 )

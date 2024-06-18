@@ -34,4 +34,7 @@ interface SignifyService {
 
     @GET("api/history")
     suspend fun getHistories(): HistoryResponse
+
+//    @GET("api/article")
+//    suspend fun getArticles(): ArticleResponse
 }
