@@ -73,10 +73,26 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:fontFamily="@font/inter_bold"
+                        android:maxWidth="200dp"
+                        android:maxLines="1"
                         android:text="@string/greeting_with_name"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:transitionName="title_app" />
+
+                    <TextView
+                        android:id="@+id/toolbar_title_emoji"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/inter_bold"
+                        android:maxWidth="200dp"
+                        android:maxLines="1"
+                        android:text="@string/greeting_emoji"
+                        android:layout_marginStart="20dp"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        />
                 </com.google.android.material.appbar.MaterialToolbar>
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -215,11 +231,10 @@
             android:layout_height="wrap_content"
             android:indeterminate="true"
             app:indicatorColor="@color/blueOne"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

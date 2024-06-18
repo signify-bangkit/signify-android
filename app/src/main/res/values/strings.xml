@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Signify</string>
-    <string name="greeting_with_name">Hi, %s 👋</string>
+    <string name="greeting_with_name">Hi, %s</string>
+    <string name="greeting_emoji">👋</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="app_title">Signify</string>
