@@ -14,7 +14,7 @@ val koinModules = listOf(
 )
 
 // set base url
-const val BASE_URL = "http://192.168.0.114:8080/"
+const val BASE_URL = "https://capstone-project-signify.et.r.appspot.com/"
 
 fun reloadKoinModules() {
     unloadKoinModules(koinModules)

@@ -96,6 +96,17 @@
         app:layout_constraintEnd_toEndOf="@id/content_layout"
         app:layout_constraintTop_toBottomOf="@id/content_layout" />
 
+    <TextView
+        android:id="@+id/add_blank_space"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/inter_semi"
+        android:text="Add Space"
+        app:layout_constraintStart_toStartOf="@id/content_layout"
+        app:layout_constraintTop_toBottomOf="@id/category_text" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/content_layout_text"
         android:layout_width="0dp"

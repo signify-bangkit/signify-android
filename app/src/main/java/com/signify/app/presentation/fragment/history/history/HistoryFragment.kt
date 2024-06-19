@@ -114,6 +114,8 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
 
                     is ApiStatus.Error -> {
                         showToast(requireActivity(), it.errorMessage)
+                        binding.emptyText.visibility = View.VISIBLE
+                        binding.emptyTvLabel.text = "(server-side) ${it.errorMessage}"
                         binding.loadingView.visibility = View.GONE
                     }
 
