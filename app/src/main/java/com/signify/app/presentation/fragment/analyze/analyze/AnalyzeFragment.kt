@@ -195,6 +195,18 @@ class AnalyzeFragment : BaseFragment<FragmentAnalyzeBinding>(),
             }
         }
 
+        binding.btnBackspace.setOnClickListener {
+            val start = binding.edResults.text.length
+            if (start > 0) {
+                binding.edResults.text.delete(start - 1, start)
+            }
+        }
+
+        binding.btnSpace.setOnClickListener {
+            val start = binding.edResults.text.length
+            binding.edResults.text.insert(start, " ")
+        }
+
     }
 
     // Initialize CameraX, and prepare to bind the camera use cases
