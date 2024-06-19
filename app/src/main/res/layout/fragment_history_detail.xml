@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:fontFamily="@font/inter_bold"
-            android:text="Detail History"
+            android:text="@string/detail_history_title_text"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:transitionName="title_app" />
@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:text="Delete History"
+        android:text="@string/delete_history_button"
         android:layout_margin="30dp"
         android:backgroundTint="@color/redOne"
         app:layout_constraintEnd_toEndOf="parent"

@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:fontFamily="@font/inter_bold"
-            android:text="Analyze"
+            android:text="@string/analyze_title_text"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:transitionName="title_app" />
@@ -79,10 +79,10 @@
         android:id="@+id/category_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="6dp"
         android:fontFamily="@font/inter_semi"
-        android:text="Category"
+        android:text="@string/analyze_category_text"
         app:layout_constraintStart_toStartOf="@id/content_layout"
         app:layout_constraintTop_toBottomOf="@id/content_layout" />
 
@@ -91,9 +91,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
         android:fontFamily="@font/inter_semi"
-        android:text="Prediction Score"
+        android:text="@string/analyze_prediction_score_text"
         app:layout_constraintEnd_toEndOf="@id/content_layout"
         app:layout_constraintTop_toBottomOf="@id/content_layout" />
 
@@ -148,7 +148,7 @@
             android:autofillHints="name"
             android:background="@color/transparent"
             android:enabled="false"
-            android:hint="Result"
+            android:hint="@string/analyze_result_hint"
             android:inputType="textMultiLine"
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -165,7 +165,7 @@
         android:layout_marginEnd="5dp"
         android:backgroundTint="@color/blueOne"
         android:fontFamily="@font/inter_bold"
-        android:text="Save Output"
+        android:text="@string/analyze_save_output_button"
         android:textSize="14sp"
         android:transitionName="btn_save"
         app:layout_constraintEnd_toStartOf="@id/imgSwitchCamera"

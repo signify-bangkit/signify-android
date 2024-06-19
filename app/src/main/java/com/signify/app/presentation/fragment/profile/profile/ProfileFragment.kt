@@ -1,11 +1,14 @@
 package com.signify.app.presentation.fragment.profile.profile
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.provider.Settings
 import android.transition.ChangeBounds
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.WindowManager
+import androidx.core.view.WindowCompat
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -39,12 +42,21 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         }
     }
 
+    private fun syncBarColor() {
+        activity?.window?.statusBarColor =
+            context?.getColor(R.color.blueOne)!!
+        activity?.window?.navigationBarColor =
+            context?.getColor(R.color.white)!!
+        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+    }
+
     override fun onResume() {
         super.onResume()
         with(binding) {
             nameText.text = "${pref.getFirstName} ${pref.getLastName}"
             emailText.text = pref.getEmail
         }
+        syncBarColor()
     }
 
     override fun doSomething() {

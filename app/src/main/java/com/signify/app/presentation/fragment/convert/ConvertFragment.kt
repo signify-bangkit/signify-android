@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.signify.app.R
 import com.signify.app.base.BaseFragment
 import com.signify.app.databinding.FragmentConvertBinding
 import com.signify.app.utils.showToast
@@ -58,7 +59,7 @@ class ConvertFragment : BaseFragment<FragmentConvertBinding>() {
             imageView.setImageResource(drawableResId)
         } else {
             binding.contentLayout.visibility = View.GONE
-            showToast(requireActivity(), "Not Supported")
+            showToast(requireActivity(), getString(R.string.not_supported))
         }
     }
 }

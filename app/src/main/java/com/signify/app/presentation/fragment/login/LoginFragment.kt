@@ -76,7 +76,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                 }
 
                 is ApiStatus.Success -> {
-                    showToast(requireActivity(), "Welcome! ${it.data.firstName}")
+                    showToast(
+                        requireActivity(),
+                        getString(R.string.greeting_toast, it.data.firstName)
+                    )
 
                     with(binding) {
                         val extras = FragmentNavigatorExtras(

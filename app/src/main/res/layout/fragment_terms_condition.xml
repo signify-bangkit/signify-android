@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:fontFamily="@font/inter_bold"
-            android:text="Terms and Condition"
+            android:text="@string/terms_and_condition_title_text"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:transitionName="title_app" />
@@ -63,14 +63,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_medium"
-                android:text="Welcome to Signify! to use our app to it's full potential, we want you to read and understand our terms and conditions first below: " />
+                android:text="@string/terms_one" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/inter_bold"
-                android:text="1. Purpose of Application Usage"
+                android:text="@string/terms_purpose_title"
                 android:textColor="@color/blueOne"
                 android:textSize="16sp" />
 
@@ -78,14 +78,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_regular"
-                android:text="Signify is designed to help users detect and identify sign languages based on images taken using the phone's camera." />
+                android:text="@string/terms_purpose_text" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/inter_bold"
-                android:text="2. Service Availability"
+                android:text="@string/terms_service_title"
                 android:textColor="@color/blueOne"
                 android:textSize="16sp" />
 
@@ -93,14 +93,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_regular"
-                android:text="This app is available for use worldwide, however it cannot guarantee that the application will run without technical interruptions." />
+                android:text="@string/terms_service_text" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/inter_bold"
-                android:text="3. User Privacy"
+                android:text="@string/terms_privacy_title"
                 android:textColor="@color/blueOne"
                 android:textSize="16sp" />
 
@@ -108,7 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_regular"
-                android:text="We respect user privacy. Data collected by the application will be used in accordance with our Privacy Policy." />
+                android:text="@string/terms_privacy_text" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

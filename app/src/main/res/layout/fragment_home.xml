@@ -40,7 +40,7 @@
                         android:layout_marginTop="85dp"
                         android:fontFamily="@font/inter_semi"
                         android:paddingBottom="10dp"
-                        android:text="Introduction"
+                        android:text="@string/home_introduction_text"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -90,7 +90,7 @@
                                 android:layout_marginHorizontal="10dp"
                                 android:fontFamily="@font/inter_medium"
                                 android:textColor="@color/white"
-                                android:text="Convert Letter to Sign Language"
+                                android:text="@string/home_convert_letter_text"
                                 android:textSize="13sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -163,7 +163,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
                     android:fontFamily="@font/inter_semi"
-                    android:text="Articles"
+                    android:text="@string/home_article_text"
                     android:textSize="16sp" />
             </com.google.android.material.appbar.MaterialToolbar>
 
@@ -326,7 +326,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@color/transparent"
-            android:src="@drawable/ic_fish_eye"
+            android:src="@drawable/ic_converter"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:fontFamily="@font/inter_bold"
-            android:text="About App"
+            android:text="@string/about_app_title_text"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:transitionName="title_app" />

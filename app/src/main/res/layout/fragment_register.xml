@@ -140,7 +140,7 @@
             android:layout_marginTop="10dp"
             android:alpha="0"
             android:fontFamily="@font/inter_regular"
-            android:text="Last Name"
+            android:text="@string/last_name_title"
             android:textColor="@color/blackTwo"
             app:layout_constraintStart_toStartOf="@id/ed_name"
             app:layout_constraintTop_toBottomOf="@id/ed_name"
