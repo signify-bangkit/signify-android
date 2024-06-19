@@ -106,7 +106,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
                     is ApiStatus.Success -> {
                         binding.loadingView.visibility = View.GONE
                         adapter.submitList(it.data.results)
-                        if(it.data.results.isEmpty()) {
+                        if (it.data.results.isEmpty()) {
                             binding.emptyText.visibility = View.VISIBLE
                         }
                         rvHistory.addItemDecoration(BottomMarginDecoration(150))
@@ -115,7 +115,8 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
                     is ApiStatus.Error -> {
                         showToast(requireActivity(), it.errorMessage)
                         binding.emptyText.visibility = View.VISIBLE
-                        binding.emptyTvLabel.text = "(server-side) ${it.errorMessage}"
+                        binding.emptyTvLabel.text =
+                            getString(R.string.server_side, it.errorMessage)
                         binding.loadingView.visibility = View.GONE
                     }
 

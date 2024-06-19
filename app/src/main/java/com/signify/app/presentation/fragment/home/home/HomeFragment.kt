@@ -110,6 +110,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 is ApiStatus.Error -> {
                     showToast(requireActivity(), it.errorMessage)
                     binding.loadingView.visibility = View.GONE
+                    binding.emptyText.visibility = View.VISIBLE
+                    binding.emptyTvLabel.text =
+                        getString(R.string.server_side, it.errorMessage)
                 }
 
                 else -> {
