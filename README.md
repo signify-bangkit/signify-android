@@ -1,10 +1,3 @@
-<!-- <img src="Cover.png" alt="Signify"> -->
-
-<h1 align="center">Signify</h1>
-
-## Introduction
-Signify is a sign language translating app
-
 ## Features
 - **Authentication**
 - **Lists of Article**
