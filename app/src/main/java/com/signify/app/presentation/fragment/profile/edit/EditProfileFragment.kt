@@ -62,7 +62,14 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
                     edName.text.toString(),
                     edNameLast.text.toString(),
                 )
-                viewModel.updateProfile(profile)
+                if (profile.firstName.isEmpty() || profile.lastName.isEmpty()) {
+                    showToast(
+                        requireActivity(),
+                        "First name or last name field is empty!"
+                    )
+                } else {
+                    viewModel.updateProfile(profile)
+                }
             }
 
             btnBack.setOnClickListener {

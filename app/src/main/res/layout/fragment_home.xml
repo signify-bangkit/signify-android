@@ -178,6 +178,20 @@
             android:paddingHorizontal="15dp"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/loading_view"
+            android:layout_width="wrap_content"
+            android:elevation="5dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="150dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:indeterminate="true"
+            app:indicatorColor="@color/blueTwo"
+            app:indicatorSize="36dp"
+            />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <View
@@ -277,17 +291,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/white" />
 
-
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/loading_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            app:indicatorColor="@color/blueOne"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
