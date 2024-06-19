@@ -32,12 +32,15 @@ val dummyData: List<Article> = listOf(
         title = "How to use Signify",
         content = """
            Signify is just a sign language translating app, it's that simple. Here's how you can maximize the potential of this app and use it fully:
+           
            1. First of all, click the center circle button on the navigation bar.
            2. As you can see there is a camera preview, Show ur hands and let the app detect your gesture.
            3. The app will detect the gesture, this app uses the new SIBI model for detection.
            4. On other notes, this app will only detect per letter.
            5. When done, you can save the output to your history database.
            6. For other information, you could see the home page (eg, sign languages examples) and profile page.
+           
+           That's it! now you can go use it now :D
         """.trimIndent(),
         date = "2023-06-18",
         imageUrl = "https://lh3.googleusercontent.com/LYUDWiiqyTSiwzbPsJnYhfTzA3kUAoYgRy_1mpKTZOuLtpaMTaNdPKm8Xesm5mxA_zUSIGy6RO4PxhUnIDgTgbmroxgVpudnc0XKWW0cByZXppI2WGo"

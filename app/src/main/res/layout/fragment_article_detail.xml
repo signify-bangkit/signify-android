@@ -40,7 +40,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/top_bar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -130,6 +131,7 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/inter_regular"
                 android:text="Description"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/divider"
                 app:layout_constraintTop_toBottomOf="@+id/date_text" />
