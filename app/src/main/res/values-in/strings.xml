@@ -78,4 +78,8 @@
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
     <string name="not_supported">Tidak terdukung</string>
+    <string name="switch_cnn">Ganti CNN</string>
+    <string name="analyze_cnn_experimental">Analisis (Eksperimental)</string>
+    <string name="warning">Peringatan</string>
+    <string name="cnn_disclaimer">Model CNN ini masih bersifat eksperimental dan kurang akurat dibandingkan dengan yang kita buat di layar sebelumnya. Apakah Anda ingin melanjutkan?</string>
 </resources>

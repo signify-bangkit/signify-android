@@ -137,10 +137,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         }
     }
 
-    private fun termsAndCondition() {
-
-    }
-
     private fun showLogoutDialog() {
         val dbinding =
             DialogLogoutBinding.inflate(LayoutInflater.from(requireContext()))

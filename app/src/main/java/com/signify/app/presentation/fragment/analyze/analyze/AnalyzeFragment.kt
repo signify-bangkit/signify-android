@@ -24,8 +24,12 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.mediapipe.tasks.vision.core.RunningMode
+import com.signify.app.R
 import com.signify.app.base.BaseFragment
+import com.signify.app.databinding.DialogCnnDisclaimerBinding
+import com.signify.app.databinding.DialogLogoutBinding
 import com.signify.app.databinding.FragmentAnalyzeBinding
 import com.signify.app.presentation.fragment.analyze.GestureRecognizerHelper
 import com.signify.app.utils.showToast
@@ -47,7 +51,7 @@ class AnalyzeFragment : BaseFragment<FragmentAnalyzeBinding>(),
     private val handler = Handler(Looper.getMainLooper())
     private var currentLetter: String? = null
     private var letterStartTime: Long = 0
-    private val scanDuration: Long = 1000
+    private val scanDuration: Long = 1500
 
     private var preview: Preview? = null
     private var imageAnalyzer: ImageAnalysis? = null
@@ -207,81 +211,74 @@ class AnalyzeFragment : BaseFragment<FragmentAnalyzeBinding>(),
             binding.edResults.text.insert(start, " ")
         }
 
+        binding.topBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.switchCNN -> {
+                    showDisclaimerDialog()
+                    true
+                }
+
+                else -> false
+            }
+        }
     }
 
-    // Initialize CameraX, and prepare to bind the camera use cases
     private fun setUpCamera() {
         val cameraProviderFuture =
             ProcessCameraProvider.getInstance(requireContext())
         cameraProviderFuture.addListener(
             {
-                // CameraProvider
                 cameraProvider = cameraProviderFuture.get()
 
-                // Build and bind the camera use cases
                 bindCameraUseCases()
             }, ContextCompat.getMainExecutor(requireContext())
         )
     }
 
-    // Inside the CameraFragment class
     private fun switchCamera() {
-        // Toggle between front and back cameras
         cameraFacing = if (cameraFacing == CameraSelector.LENS_FACING_FRONT) {
             CameraSelector.LENS_FACING_BACK
         } else {
             CameraSelector.LENS_FACING_FRONT
         }
 
-        // Update the isCameraFrontFacing value in OverlayView
         binding.overlay.updateCameraFrontFacing(cameraFacing == CameraSelector.LENS_FACING_FRONT)
 
-        // Rebind the camera use cases with the new camera facing
         bindCameraUseCases()
     }
 
-
-    // Declare and bind preview, capture and analysis use cases
     @SuppressLint("UnsafeOptInUsageError")
     private fun bindCameraUseCases() {
 
-        // CameraProvider
         val cameraProvider = cameraProvider
             ?: throw IllegalStateException("Camera initialization failed.")
 
         val cameraSelector =
             CameraSelector.Builder().requireLensFacing(cameraFacing).build()
 
-        // Preview. Only using the 4:3 ratio because this is the closest to our models
         preview = Preview.Builder().setTargetAspectRatio(AspectRatio.RATIO_4_3)
             .setTargetRotation(binding.viewFinder.display.rotation)
             .build()
 
-        // ImageAnalysis. Using RGBA 8888 to match how our models work
         imageAnalyzer =
             ImageAnalysis.Builder().setTargetAspectRatio(AspectRatio.RATIO_4_3)
                 .setTargetRotation(binding.viewFinder.display.rotation)
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                 .setOutputImageFormat(ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888)
                 .build()
-                // The analyzer can then be assigned to the instance
                 .also {
                     it.setAnalyzer(backgroundExecutor) { image ->
                         recognizeHand(image)
                     }
                 }
 
-        // Must unbind the use-cases before rebinding them
         cameraProvider.unbindAll()
 
         try {
-            // A variable number of use-cases can be passed here -
-            // camera provides access to CameraControl & CameraInfo
             camera = cameraProvider.bindToLifecycle(
                 this, cameraSelector, preview, imageAnalyzer
             )
 
-            // Attach the viewfinder's surface provider to preview use case
             preview?.setSurfaceProvider(binding.viewFinder.surfaceProvider)
         } catch (exc: Exception) {
             Log.e(TAG, "Use case binding failed", exc)
@@ -301,15 +298,10 @@ class AnalyzeFragment : BaseFragment<FragmentAnalyzeBinding>(),
             binding.viewFinder.display.rotation
     }
 
-    // Update UI after a hand gesture has been recognized. Extracts original
-    // image height/width to scale and place the landmarks properly through
-    // OverlayView. Only one result is expected at a time. If two or more
-    // hands are seen in the camera frame, only one will be processed.
     override fun onResults(
         resultBundle: GestureRecognizerHelper.ResultBundle
     ) {
         activity?.runOnUiThread {
-            // Show result of recognized gesture
             val gestureCategories = resultBundle.results.first().gestures()
             with(binding) {
                 if (gestureCategories.isNotEmpty()) {
@@ -326,12 +318,12 @@ class AnalyzeFragment : BaseFragment<FragmentAnalyzeBinding>(),
                     appendCategory(category)
 
                 } else {
+                    resetTimer()
                     scoreText.text = "--"
                     categoryText.text = "--"
                 }
             }
 
-            // Pass necessary information to OverlayView for drawing on the canvas
             binding.overlay.setResults(
                 resultBundle.results.first(),
                 resultBundle.inputImageHeight,
@@ -339,7 +331,6 @@ class AnalyzeFragment : BaseFragment<FragmentAnalyzeBinding>(),
                 RunningMode.LIVE_STREAM
             )
 
-            // Force a redraw
             binding.overlay.invalidate()
         }
     }
@@ -377,6 +368,37 @@ class AnalyzeFragment : BaseFragment<FragmentAnalyzeBinding>(),
     override fun onError(error: String, errorCode: Int) {
         activity?.runOnUiThread {
             Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun showDisclaimerDialog() {
+        val dbinding =
+            DialogCnnDisclaimerBinding.inflate(LayoutInflater.from(requireContext()))
+
+        val dialog = MaterialAlertDialogBuilder(
+            requireContext(),
+            R.style.DialogAnimation
+        )
+            .setView(dbinding.root)
+            .setCancelable(true)
+            .create()
+
+        dialog.show()
+
+        dbinding.btnNo.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dbinding.btnYes.setOnClickListener {
+            dialog.dismiss()
+            val extras = FragmentNavigatorExtras(
+                binding.toolbarTitle to "title_app",
+                binding.btnSave to "btn_save"
+            )
+            findNavController().navigate(
+                AnalyzeFragmentDirections.actionAnalyzeFragmentToAnalyzeCNNFragment(),
+                extras
+            )
         }
     }
 }

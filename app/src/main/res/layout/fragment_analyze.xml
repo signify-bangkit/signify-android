@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/blueOne"
+        app:menu="@menu/analyze_menu"
         app:layout_collapseMode="pin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +39,7 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:transitionName="title_app" />
+
     </com.google.android.material.appbar.MaterialToolbar>
 
     <androidx.constraintlayout.widget.ConstraintLayout

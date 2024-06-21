@@ -111,6 +111,9 @@
         <action
             android:id="@+id/action_analyzeFragment_to_outputFragment"
             app:destination="@id/outputFragment" />
+        <action
+            android:id="@+id/action_analyzeFragment_to_analyzeCNNFragment"
+            app:destination="@id/analyzeCNNFragment" />
     </fragment>
     <fragment
         android:id="@+id/outputFragment"
@@ -180,4 +183,13 @@
         android:name="com.signify.app.presentation.fragment.convert.ConvertFragment"
         android:label="fragment_convert"
         tools:layout="@layout/fragment_convert" />
+    <fragment
+        android:id="@+id/analyzeCNNFragment"
+        android:name="com.signify.app.presentation.fragment.analyze.analyze.AnalyzeCNNFragment"
+        android:label="fragment_analyze_c_n_n"
+        tools:layout="@layout/fragment_analyze_c_n_n" >
+        <action
+            android:id="@+id/action_analyzeCNNFragment_to_outputFragment"
+            app:destination="@id/outputFragment" />
+    </fragment>
 </navigation>

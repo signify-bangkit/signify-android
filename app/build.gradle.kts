@@ -24,6 +24,7 @@ android {
     buildFeatures {
         buildConfig = true
         viewBinding = true
+        mlModelBinding = true
     }
 
     buildTypes {
@@ -66,6 +67,7 @@ dependencies {
     // Room
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.tensorflow.lite.gpu)
     annotationProcessor(libs.androidx.room.compiler)
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
@@ -113,7 +115,8 @@ dependencies {
     // CameraX View class
     implementation (libs.androidx.camera.view)
 
-    // WindowManager
-    implementation ("androidx.window:window:1.1.0-alpha03")
-
+    // Tensorflow for Our Second ML Model
+    implementation(libs.tensorflow.lite)
+    implementation(libs.tensorflow.lite.support)
+    implementation(libs.tensorflow.lite.metadata)
 }

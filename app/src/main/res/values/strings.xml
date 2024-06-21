@@ -77,4 +77,8 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="not_supported">Not Supported</string>
+    <string name="switch_cnn">Switch CNN</string>
+    <string name="analyze_cnn_experimental">Analyze (Experimental)</string>
+    <string name="warning">Warning</string>
+    <string name="cnn_disclaimer">This CNN model is still experimental and less accurate than the one we created in the previous screen. Would you like to continue?</string>
 </resources>
