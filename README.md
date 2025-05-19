@@ -1,3 +1,4 @@
+![Signify Screenshot](screenshot.png)
 ## Features
 - **Authentication**
 - **Lists of Article**
